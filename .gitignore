@@ -1,0 +1,10 @@
+# testing
+.coverage
+.pytest_cache/
+htmlcov/
+.mypy_cache
+
+# python generic
+__pycache__
+.env
+*.ipynb

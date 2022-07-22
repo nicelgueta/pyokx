@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "python-okx"
+version = "0.1.0"
+description = "Python wrapper for the OKX V5 API"
+authors = ["nicelgueta <nicelgueta@gmail.com>"]
+license = "MIT"
+readme="README.md"
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+include = [
+    "LICENSE",
+]
+
+[tool.pytest.ini_options]
+addopts = "--cov=pyokx pyokx/tests/"
+
+[tool.coverage.run]
+omit = [
+    "pyokx/interfaces/*",
+    "pyokx/tests/*"
+]
+
+[tool.mypy]
+ignore_missing_imports = "True"
+no_implicit_optional = "False"
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+typeguard = "^2.13.3"
+loguru = "^0.6.0"
+requests = "^2.28.1"
+python-dotenv = "^0.20.0"
+pandas = "^1.4.3"
+
+[tool.poetry.dev-dependencies]
+black = "^22.3.0"
+pytest = "^7.1.2"
+mypy = "^0.950"
+pytest-cov = "^3.0.0"
+bs4 = "^0.0.1"
+types-requests = "^2.28.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
