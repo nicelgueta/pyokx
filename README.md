@@ -1,6 +1,6 @@
-# python-okx
+# pyokx
 
-python-okx is a completely unofficial python API wrapper developed to interact with the OKX V5 API. 
+pyokx is a completely unofficial python API wrapper developed to interact with the OKX V5 API. 
 It's unique insofar as that it has been developed by scraping the API documentation to dynamically generate python code to provide an intuitive
 pythonic interface for exact same API. This idea essentially is to avoid the need to create separate documentation for this wrapper and instead you can simply refer to the official OKX docs for API usage.
 
@@ -15,7 +15,7 @@ Check out the docs for get balance here: https://www.okx.com/docs-v5/en/#rest-ap
 We can see the endpoint belongs to the Account API and needs to be called with 3 parameters:
 ![OKX-docs](get-pos.png)
 
-In python-okx, you can see the method signature for the Account class is exactly the same:
+In pyokx, you can see the method signature for the Account class is exactly the same:
 ```python
 def get_positions(
         self,
@@ -69,4 +69,4 @@ This is essentially a wrapper around the response that is returned from every en
 - [ ] Enchance documentation
 
 ## Disclaimer
-> NB. python-okx is totally unofficial and is in no way affiliated with OKEX Crypto exchange and simply exists as a helpful wrapper to interact with the V5 API.
+> NB. pyokx is totally unofficial and is in no way affiliated with OKEX Crypto exchange and simply exists as a helpful wrapper to interact with the V5 API.
