@@ -1,10 +1,13 @@
 # pyokx
 
+
 pyokx is a completely unofficial python API wrapper developed to interact with the OKX V5 API. 
 It's unique insofar as that it has been developed by scraping the API documentation to dynamically generate python code to provide an intuitive
 pythonic interface for exact same API. This idea essentially is to avoid the need to create separate documentation for this wrapper and instead you can simply refer to the official OKX docs for API usage.
 
 It's used by creating a base client instance to make and receive requests and passing that client to each API class (`APIComponent`), which has been dynamically generated from the API docs.
+
+**It's still a very early version - so issues, feature requests and bugs are welcome!**
 
 **Let's start with an example.**
 
@@ -61,12 +64,18 @@ That simple.
 
 This is essentially a wrapper around the response that is returned from every endpoint. This is to provide some useful helper methods such as dataframe conversion.
 
+## Installation
+
+```shell
+pip install pyokx
+```
+
 ## Development progress
 
 - [x] REST API implementation.
 - [ ] Fix pythonic naming conventions when API names contain special characters
+- [ ] Enhance documentation
 - [ ] Websocket API implementation. 
-- [ ] Enchance documentation
 
 ## Disclaimer
 > NB. pyokx is totally unofficial and is in no way affiliated with OKEX Crypto exchange and simply exists as a helpful wrapper to interact with the V5 API.
