@@ -1,5 +1,12 @@
 # pyokx
 
+## Installation
+
+```shell
+pip install pyokx
+```
+
+## Introduction
 
 pyokx is a completely unofficial python API wrapper developed to interact with the OKX V5 API. 
 It's unique insofar as that it has been developed by scraping the API documentation to dynamically generate python code to provide an intuitive
@@ -7,7 +14,6 @@ pythonic interface for exact same API. This idea essentially is to avoid the nee
 
 It's used by creating a base client instance to make and receive requests and passing that client to each API class (`APIComponent`), which has been dynamically generated from the API docs.
 
-**It's still a very early version - so issues, feature requests and bugs are welcome!**
 
 **Let's start with an example.**
 
@@ -64,13 +70,9 @@ That simple.
 
 This is essentially a wrapper around the response that is returned from every endpoint. This is to provide some useful helper methods such as dataframe conversion.
 
-## Installation
-
-```shell
-pip install pyokx
-```
-
 ## Development progress
+
+**It's still a very early version - so issues, feature requests and bugs are very welcome!**
 
 - [x] REST API implementation.
 - [ ] Fix pythonic naming conventions when API names contain special characters
