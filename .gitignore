@@ -8,3 +8,6 @@ htmlcov/
 __pycache__
 .env
 *.ipynb
+
+# other
+.vscode/

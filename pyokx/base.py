@@ -1,4 +1,3 @@
-from ctypes import Union
 from dataclasses import dataclass, field
 import pandas as pd
 from typing import Any, Dict, Optional
@@ -8,7 +7,6 @@ import requests
 from .constants import BASE_URL, VALID_HTTP_METHOD
 from .exceptions import OKXServerError, OKXClientError, OKXContentException
 from loguru import logger
-import json
 
 
 @typechecked
@@ -111,6 +109,10 @@ class OKXClient(object):
 
 @dataclass
 class EndpointDetails:
+    """
+    Dataclass to house the details required to make a request
+    """
+
     request_path: str
     method: VALID_HTTP_METHOD
     params: Optional[Dict[str, Any]] = field(default=None)
@@ -120,25 +122,47 @@ class EndpointDetails:
 
 @dataclass
 class APIReturn:
+    """
+    Wrapper to hold standard methods to perform onthe response
+    """
+
     response: requests.Response
 
     def to_df(self) -> pd.DataFrame:
-        return pd.DataFrame(self.response.json())
+        """
+        Returns reponse data in the 'data' property as a
+        pandas dataframe
+        """
+        return pd.DataFrame(self.response.json()["data"])
+
+    def okx_code(self) -> int:
+        """
+        Returns the OKX response code (not the http response)
+        """
+        return int(self.response.json()["code"])
 
 
-# class ApiComponent(object):
-#     """
-#     Sub component for each API
-#     """
+class APIComponent(object):
+    """
+    Sub component for each API
+    """
 
-#     def __init__(self, base: OKXClient):
-#         self.base = base
+    def __init__(self, base: OKXClient):
+        self.base = base
 
-#     def request(
-#         details: EndpointDetails,
-#     ) -> Union[pd.DataFrame, requests.Response]:
-#         """
-#         Make the request to the xchange and return
-#         the response object
-#         """
-#         self.base._pre
+    def request(
+        self,
+        details: EndpointDetails,
+    ) -> APIReturn:
+        """
+        Make the request to the xchange and return
+        the response object
+        """
+        response = self.base.make_request(
+            request_path=details.request_path,
+            method=details.method,
+            params=details.params,
+            body=details.body,
+            use_proxy=details.use_proxy,
+        )
+        return APIReturn(response=response)

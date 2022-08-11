@@ -1,5 +1,4 @@
 import pytest
-from datetime import timedelta
 from pyokx.auth import OKXAuth
 
 

@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "python-okx"
 version = "0.1.0"
-description = "Python wrapper for the OKX V5 API"
+description = "Unofficial ython wrapper for the OKX V5 API"
 authors = ["nicelgueta <nicelgueta@gmail.com>"]
-license = "MIT"
+license = "GNU"
 readme="README.md"
 classifiers = [
     "Environment :: Console",
@@ -19,9 +19,12 @@ include = [
 addopts = "--cov=pyokx pyokx/tests/"
 
 [tool.coverage.run]
-omit = [
-    "pyokx/interfaces/*",
-    "pyokx/tests/*"
+include = [
+    "pyokx/__init__.py",
+    "pyokx/auth.py",
+    "pyokx/base.py",
+    "pyokx/constants.py",
+    "pyokx/exceptions.py"
 ]
 
 [tool.mypy]
@@ -44,6 +47,10 @@ mypy = "^0.950"
 pytest-cov = "^3.0.0"
 bs4 = "^0.0.1"
 types-requests = "^2.28.3"
+ipykernel = "^6.15.1"
+lxml = "^4.9.1"
+html5lib = "^1.1"
+autoflake = "^1.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -1,6 +1,7 @@
 .PHONY: lint check
 lint:
 	python -m black pyokx
+	python -m autoflake pyokx -r --in-place --remove-unused-variables --remove-all-unused-imports
 check:
 	python -m black pyokx --check
 	python -m mypy pyokx
@@ -8,7 +9,7 @@ check:
 .PHONY: test test-html
 test:
 	pytest pyokx
-	coverage report --fail-under=95
+	coverage report
 
 covhtml:
 	coverage html
