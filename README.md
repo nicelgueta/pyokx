@@ -1,5 +1,5 @@
-# pyokx
-
+# pyokx 
+![Your Repository’s Stats](https://img.shields.io/pypi/dm/pyokx)
 ## Installation
 
 ```shell

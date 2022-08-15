@@ -14,9 +14,13 @@ test:
 covhtml:
 	coverage html
 
-.PHONY: commit
-commit: check test
+.PHONY: exp-reqs
+exp-reqs:
+	poetry export -f requirements.txt --output requirements.txt
 
+.PHONY: commit exp-reqs
+commit: check test
+	
 .PHONY: setup
 setup:
 	git config --local core.hooksPath ./hooks/
