@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyokx"
-version = "0.2.0"
+version = "0.2.1"
 description = "Unofficial python wrapper for the OKX V5 API"
 authors = ["nicelgueta <nicelgueta@gmail.com>"]
 license = "GNU"

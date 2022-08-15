@@ -12,9 +12,10 @@ from .Status import Status
 from .SubAccount import SubAccount
 from .Trade import Trade
 from .Tradingdata import Tradingdata
+from .base import OKXClient
 
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 
 def change_log_level(level: str = "INFO"):
@@ -38,4 +39,5 @@ __all__ = [
     "Trade",
     "Tradingdata",
     "change_log_level",
+    "OKXClient",
 ]

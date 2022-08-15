@@ -1,5 +1,4 @@
-from pyokx.base import OKXClient
-from pyokx import Account
+from pyokx import OKXClient, Account
 
 # create the base client dependency
 cli = OKXClient(
