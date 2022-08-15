@@ -1,5 +1,5 @@
 from pyokx.base import OKXClient
-from pyokx.Account import Account
+from pyokx import Account
 
 # create the base client dependency
 cli = OKXClient(
@@ -16,6 +16,8 @@ api_return = account.get_positions()
 
 # to convert to a pandas dataframe
 df = api_return.to_df()
+print(df)
 
 # to look at the raw response
 response = api_return.response
+print(response.status)
