@@ -18,7 +18,7 @@ covhtml:
 exp-reqs:
 	poetry export -f requirements.txt --output requirements.txt
 
-.PHONY: commit exp-reqs
+.PHONY: commit
 commit: check test
 	
 .PHONY: setup
