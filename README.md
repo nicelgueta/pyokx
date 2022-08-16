@@ -65,11 +65,36 @@ response = api_return.response
 
 That simple.
 
+______
+
+
 ## Key features
 
 ### APIReturn
 
 This is essentially a wrapper around the response that is returned from every endpoint. This is to provide some useful helper methods such as dataframe conversion.
+
+### Proxies
+
+As is common with a lot of exchange APIs, for calls that require authentication (usually account/trade-related), it is strongly encouraged to limit your API key to a select list IP addresses to protect your account. On some systems this may require routing traffic through a forward proxy. pyokx supports this pattern by allowing you to pass the necessary proxies to the base client and you can trigger this behaviour by setting the `use_proxy` parameter to `True`.
+For example:
+```python
+proxies = {
+    "http": "http://your-proxy-server.com",
+    "https": "https://your-proxy-server.com",
+}
+cli = OKXClient(
+    key="key",
+    secret="secret",
+    passphrase="passphrase",
+    proxies=proxies
+)
+
+# trigger the use of the proxy server with use_proxy
+a = Account(cli)
+api_return = a.get_positions(use_proxy=True)
+
+```
 
 ## Development progress
 
