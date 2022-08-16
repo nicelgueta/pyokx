@@ -39,8 +39,7 @@ def get_positions(
 So this can be easily implemented like so:
 
 ```python
-from pyokx.base import OKXClient
-from pyokx.Account import Account
+from pyokx import Account, OKXClient
 
 # create the base client dependency
 cli = OKXClient(
