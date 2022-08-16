@@ -15,7 +15,7 @@ from .Tradingdata import Tradingdata
 from .base import OKXClient
 
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 
 
 def change_log_level(level: str = "INFO"):
