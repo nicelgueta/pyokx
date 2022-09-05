@@ -45,10 +45,11 @@ So this can be easily implemented like so:
     PASSPHRASE = replace_your_passphrase_here
 ```
 
-1. Read API information from `.env` and create the base client:
+2. Read API information from `.env` and create the base client:
 ```python
 import os
-# make sure that you installed dotenv
+
+# python-dotenv should have been installed from the dependencies
 from dotenv import load_dotenv
 from pyokx import OKXClient, Account
 
@@ -102,7 +103,7 @@ proxies = {
     "http": "http://your-proxy-server.com",
     "https": "https://your-proxy-server.com",
 }
-cli = OKXClient(
+client = OKXClient(
     key="key",
     secret="secret",
     passphrase="passphrase",
@@ -110,8 +111,8 @@ cli = OKXClient(
 )
 
 # trigger the use of the proxy server with use_proxy
-a = Account(cli)
-api_return = a.get_positions(use_proxy=True)
+account = Account(client)
+api_response = account.get_positions(use_proxy=True)
 
 ```
 
