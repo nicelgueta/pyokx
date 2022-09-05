@@ -28,12 +28,12 @@ class Blocktrading(APIComponent):
         self,
         counterparties: List[str],
         legs: List[dict],
-        __instId: str,
-        __sz: str,
-        __side: str,
+        instId: str,
+        sz: str,
+        side: str,
         anonymous: bool = None,
         clRfqId: str = None,
-        __tgtCcy: str = None,
+        tgtCcy: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -154,13 +154,15 @@ class Blocktrading(APIComponent):
         self,
         instType: str,
         data: List[dict],
-        __uly: str = None,
-        __instId: str = None,
+        uly: str = None,
+        instId: str = None,
+        maxBlockSz: str = None,
+        makerPxBand: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
         Set Quote products
-        Customize the products of which makers want to quote.
+        Customize the products which makers want to quote and receive RFQs for, and the corresponding price and size limit.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
         """
@@ -177,19 +179,39 @@ class Blocktrading(APIComponent):
         )
         return self.request(details)
 
+    def reset_mmp_status(self, use_proxy: bool = False) -> APIReturn:
+        """
+        Reset MMP status
+        Reset the MMP status to be inactive.
+        Rate Limit: 5 requests per 2 seconds
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/rfq/mmp-reset",
+            method="POST",
+            body=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
     def create_quote(
         self,
         rfqId: str,
         quoteSide: str,
         legs: List[dict],
-        __instId: str,
-        __sz: str,
-        __px: str,
-        __side: str,
+        instId: str,
+        sz: str,
+        px: str,
+        side: str,
         clQuoteId: str = None,
         anonymous: bool = None,
         expiresIn: str = None,
-        __tgtCcy: str = None,
+        tgtCcy: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """

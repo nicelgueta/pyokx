@@ -121,7 +121,7 @@ api_response = account.get_positions(use_proxy=True)
 **It's still a very early version - so issues, feature requests and bugs are very welcome!**
 
 - [x] REST API implementation.
-- [ ] Fix pythonic naming conventions when API names contain special characters
+- [x] Fix pythonic naming conventions when API names contain special characters
 - [ ] Enhance documentation
 - [ ] Websocket API implementation. 
 

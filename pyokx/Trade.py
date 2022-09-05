@@ -209,6 +209,8 @@ class Trade(APIComponent):
         posSide: str = None,
         ccy: str = None,
         autoCxl: bool = None,
+        clOrdId: str = None,
+        tag: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -289,7 +291,7 @@ class Trade(APIComponent):
         )
         return self.request(details)
 
-    def get_order_history__last___days_(
+    def get_order_history_last_7_days(
         self,
         instType: str = None,
         uly: str = None,
@@ -321,7 +323,7 @@ class Trade(APIComponent):
         )
         return self.request(details)
 
-    def get_order_history__last___months_(
+    def get_order_history_last_3_months(
         self,
         instType: str = None,
         uly: str = None,
@@ -353,7 +355,7 @@ class Trade(APIComponent):
         )
         return self.request(details)
 
-    def get_transaction_details__last___days_(
+    def get_transaction_details_last_3_days(
         self,
         instType: str = None,
         uly: str = None,
@@ -385,7 +387,7 @@ class Trade(APIComponent):
         )
         return self.request(details)
 
-    def get_transaction_details__last___months_(
+    def get_transaction_details_last_3_months(
         self,
         instType: str = None,
         uly: str = None,
@@ -552,6 +554,145 @@ class Trade(APIComponent):
         }
         details = EndpointDetails(
             request_path="/api/v5/trade/orders-algo-history",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def get_easy_convert_currency_list(self, use_proxy: bool = False) -> APIReturn:
+        """
+        Get easy convert currency list
+        Get list of small convertibles and mainstream currencies. Only applicable to the crypto balance less than $10.
+        Rate Limit: 1 request per 2 seconds
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/trade/easy-convert-currency-list",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def place_easy_convert(
+        self, fromCcy: list, toCcy: str, use_proxy: bool = False
+    ) -> APIReturn:
+        """
+        Place easy convert
+        Convert small currencies to mainstream currencies. Only applicable to the crypto balance less than $10.
+        Rate Limit: 1 request per 2 seconds
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/trade/easy-convert",
+            method="POST",
+            body=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def get_easy_convert_history(
+        self,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
+        """
+        Get easy convert history
+        Get the history and status of easy convert trades.
+        Rate Limit: 1 request per 2 seconds
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/trade/easy-convert-history",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def get_one_click_repay_currency_list(
+        self, debtType: str = None, use_proxy: bool = False
+    ) -> APIReturn:
+        """
+        Get one-click repay currency list
+        Get list of debt currency data and repay currencies. Debt currencies include both cross and isolated debts.
+        Rate Limit: 1 request per 2 seconds
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/trade/one-click-repay-currency-list",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def trade_one_click_repay(
+        self, debtCcy: list, repayCcy: str, use_proxy: bool = False
+    ) -> APIReturn:
+        """
+                        Trade one-click repay
+                        Trade one-click repay to repay cross debts. Isolated debts are not applicable.
+        The maximum repayment amount is based on the remaining available balance of funding and trading accounts.
+                        Rate Limit: 1 request per 2 seconds
+                        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/trade/one-click-repay",
+            method="POST",
+            body=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def get_one_click_repay_history(
+        self,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
+        """
+        Get one-click repay history
+        Get the history and status of one-click repay trades.
+        Rate Limit: 1 request per 2 seconds
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/trade/one-click-repay-history",
             method="GET",
             params=kwargs,
             use_proxy=use_proxy,

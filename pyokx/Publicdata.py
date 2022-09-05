@@ -135,6 +135,7 @@ class Publicdata(APIComponent):
         Get limit price
         Retrieve the highest buy limit and lowest sell limit of the instrument.
         Rate Limit: 20 requests per 2 seconds
+        Rate limit rule: IP
         """
         kwargs = {
             k: v

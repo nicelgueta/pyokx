@@ -251,7 +251,7 @@ class Marketdata(APIComponent):
         )
         return self.request(details)
 
-    def get___h_total_volume(self, use_proxy: bool = False) -> APIReturn:
+    def get_24h_total_volume(self, use_proxy: bool = False) -> APIReturn:
         """
         Get 24H total volume
         The 24-hour trading volume is calculated on a rolling basis, using USD as the pricing unit, including block trading volume.

@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "pyokx"
-version = "0.2.2"
+version = "0.3.0"
 description = "Unofficial python wrapper for the OKX V5 API"
 authors = ["nicelgueta"]
-license = "GNU"
+license = "MIT"
 readme="README.md"
 classifiers = [
     "Environment :: Console",

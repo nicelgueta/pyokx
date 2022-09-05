@@ -78,15 +78,19 @@ class Funding(APIComponent):
         type: str = None,
         loanTrans: bool = None,
         clientId: str = None,
+        omitPosRisk: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
-        Funds transfer
-        Only API keys with Trade privilege can call this endpoint.
-        This endpoint supports the transfer of funds between your funding account and trading account, and from the master account to sub-accounts.
-        Sub-account can transfer out to master account by default. Need to call "Set Permission Of Transfer Out" to grant privilege first if you want sub-account transferring to another sub-account(subaccounts need to belong to same master account.)
-        Rate Limit: 1 request per second
-        Rate limit rule: UserID + Currency
+                        Funds transfer
+                        Only API keys with Trade privilege can call this endpoint.
+                        This endpoint supports the transfer of funds between your funding account and trading account, and from the master account to sub-accounts.
+                        Sub-account can transfer out to master account by default. Need to call "Set Permission Of Transfer Out" to grant privilege first if you want sub-account transferring to another sub-account(subaccounts need to belong to same master account.)
+
+        Failure of the request does not mean the transfer has failed. Recommend to call "Get funds transfer state" to confirm the status.
+
+                        Rate Limit: 1 request per second
+                        Rate limit rule: UserID + Currency
         """
         kwargs = {
             k: v
@@ -110,6 +114,7 @@ class Funding(APIComponent):
     ) -> APIReturn:
         """
         Get funds transfer state
+        Retrieve the transfer state data of the last 2 weeks.
         Rate Limit: 1 request per second
         Rate limit rule: UserID
         """
@@ -138,7 +143,7 @@ class Funding(APIComponent):
     ) -> APIReturn:
         """
         Asset bills details
-        Query the billing record. You can get the latest 1 month historical data
+        Query the billing record. You can get the latest 1 month historical data.
         Rate Limit: 6 Requests per second
         Rate limit rule: UserID
         """
@@ -438,7 +443,7 @@ class Funding(APIComponent):
         )
         return self.request(details)
 
-    def get_public_borrow_info__public_(
+    def get_public_borrow_info_public(
         self, ccy: str = None, use_proxy: bool = False
     ) -> APIReturn:
         """
@@ -460,7 +465,7 @@ class Funding(APIComponent):
         )
         return self.request(details)
 
-    def get_public_borrow_history__public_(
+    def get_public_borrow_history_public(
         self,
         ccy: str = None,
         after: str = None,

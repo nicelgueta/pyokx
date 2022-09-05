@@ -32,18 +32,15 @@ class Earn(APIComponent):
         self,
         productId: str,
         investData: list,
-        _ccy: str,
-        _amt: str,
+        ccy: str,
+        amt: str,
         term: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
-                        Purchase
-
-        When making purchase, assets in both trading and funding account will be used (priority funding account).
-
-                        Rate Limit: 2 requests per second
-                        Rate limit rule: UserID
+        Purchase
+        Rate Limit: 2 requests per second
+        Rate limit rule: UserID
         """
         kwargs = {
             k: v

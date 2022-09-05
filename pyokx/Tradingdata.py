@@ -176,7 +176,7 @@ class Tradingdata(APIComponent):
         )
         return self.request(details)
 
-    def get_open_interest_and_volume__expiry_(
+    def get_open_interest_and_volume_expiry(
         self, ccy: str, period: str = None, use_proxy: bool = False
     ) -> APIReturn:
         """
@@ -198,7 +198,7 @@ class Tradingdata(APIComponent):
         )
         return self.request(details)
 
-    def get_open_interest_and_volume__strike_(
+    def get_open_interest_and_volume_strike(
         self, ccy: str, expTime: str, period: str = None, use_proxy: bool = False
     ) -> APIReturn:
         """

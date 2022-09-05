@@ -72,6 +72,7 @@ class Gridtrading(APIComponent):
     ) -> APIReturn:
         """
         Stop grid algo order
+        A maximum of 10 orders can be canceled per request.
         Rate Limit: 20 requests per 2 seconds
         Derivatives rate limit rule: UserID +(instrumentType、underlying)
         Spot & Margin rate limit rule: UserID +(instrumentType、instrumentID)
@@ -218,11 +219,11 @@ class Gridtrading(APIComponent):
         )
         return self.request(details)
 
-    def spot_grid_withdraw_income(
+    def spot_moon_grid_withdraw_income(
         self, algoId: str, use_proxy: bool = False
     ) -> APIReturn:
         """
-        Spot grid withdraw income
+        Spot/Moon grid withdraw income
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
         """
@@ -286,7 +287,7 @@ class Gridtrading(APIComponent):
         )
         return self.request(details)
 
-    def get_grid_ai_parameter__public_(
+    def get_grid_ai_parameter_public(
         self,
         algoOrdType: str,
         instId: str,

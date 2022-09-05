@@ -142,6 +142,7 @@ class SubAccount(APIComponent):
         fromSubAccount: str,
         toSubAccount: str,
         loanTrans: bool = None,
+        omitPosRisk: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """

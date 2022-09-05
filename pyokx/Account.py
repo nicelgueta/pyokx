@@ -108,7 +108,7 @@ class Account(APIComponent):
         )
         return self.request(details)
 
-    def get_bills_details__last___days_(
+    def get_bills_details_last_7_days(
         self,
         instType: str = None,
         ccy: str = None,
@@ -142,7 +142,7 @@ class Account(APIComponent):
         )
         return self.request(details)
 
-    def get_bills_details__last___months_(
+    def get_bills_details_last_3_months(
         self,
         instType: str = None,
         ccy: str = None,
@@ -256,6 +256,7 @@ class Account(APIComponent):
         ccy: str = None,
         px: str = None,
         leverage: str = None,
+        unSpotOffset: bool = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -285,7 +286,7 @@ class Account(APIComponent):
         tdMode: str,
         ccy: str = None,
         reduceOnly: bool = None,
-        px: str = None,
+        unSpotOffset: bool = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -452,7 +453,7 @@ class Account(APIComponent):
         )
         return self.request(details)
 
-    def set_greeks__pa_bs_(self, greeksType: str, use_proxy: bool = False) -> APIReturn:
+    def set_greeks_pa_bs(self, greeksType: str, use_proxy: bool = False) -> APIReturn:
         """
         Set greeks (PA/BS)
         Set the display type of Greeks.
@@ -609,8 +610,8 @@ class Account(APIComponent):
         instType: str = None,
         inclRealPos: bool = None,
         simPos: list = None,
-        __instId: str = None,
-        __pos: str = None,
+        instId: str = None,
+        pos: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
