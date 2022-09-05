@@ -1,22 +1,27 @@
+import os
+from dotenv import load_dotenv
 from pyokx import OKXClient, Account
 
-# create the base client dependency
-cli = OKXClient(
-    key="key",
-    secret="secret",
-    passphrase="passphrase",
+# read user information from .env file 
+load_dotenv()
+
+# create the base client:
+client = OKXClient(
+    key = os.getenv('KEY'),
+    secret = os.getenv('SECRET'),
+    passphrase = os.getenv('PASSPHRASE'),
 )
 
 # create a component for the Account API by passing the client dependency
-account = Account(cli)
+account = Account(client)
 
 # get positions
-api_return = account.get_positions()
+api_response = account.get_positions()
 
-# to convert to a pandas dataframe
-df = api_return.to_df()
-print(df)
+# you can convert to a pandas dataframe to make it more readable
+df_response = api_response.to_df()
+print(df_response)
 
-# to look at the raw response
-response = api_return.response
-print(response.status)
+# or you can get the raw response
+raw_response = api_response.response
+print(raw_response)

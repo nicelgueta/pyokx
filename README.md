@@ -38,28 +38,48 @@ def get_positions(
 
 So this can be easily implemented like so:
 
+1. Create `.env` file that contains your API information:
+```
+    KEY = replace_your_key_here
+    SECRET = replace_your_secret_here
+    PASSPHRASE = replace_your_passphrase_here
+```
+
+1. Read API information from `.env` and create the base client:
 ```python
-from pyokx import Account, OKXClient
+import os
+# make sure that you installed dotenv
+from dotenv import load_dotenv
+from pyokx import OKXClient, Account
 
-# create the base client dependency
-cli = OKXClient(
-    key="key",
-    secret="secret",
-    passphrase="passphrase",
+# read information from .env file
+load_dotenv()
+
+# create the base client:
+client = OKXClient(
+    key = os.getenv('KEY'),
+    secret = os.getenv('SECRET'),
+    passphrase = os.getenv('PASSPHRASE'),
 )
+...
+```
 
+3. Now you can create Account object and call endpoints
+```python
+...
 # create a component for the Account API by passing the client dependency
-a = Account(cli)
+account = Account(client)
 
 # get positions
-api_return = a.get_positions()
+api_response = account.get_positions()
 
-# to convert to a pandas dataframe
-df = api_return.to_df()
+# you can convert to a pandas dataframe to make it more readable
+df_response = api_response.to_df()
+print(df_response)
 
-# to look at the raw response
-response = api_return.response
-
+# or you can get the raw response
+raw_response = api_response.response
+print(raw_response)
 ```
 
 That simple.
