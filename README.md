@@ -1,5 +1,5 @@
 # pyokx 
-![Downloads](https://img.shields.io/pypi/dm/pyokx) 
+[![Downloads](https://static.pepy.tech/personalized-badge/pyokx?period=month&units=international_system&left_color=grey&right_color=green&left_text=Downloads/month)](https://pepy.tech/project/pyokx)
 ![Tests](https://github.com/nicelgueta/pyokx/actions/workflows/pyokx.yml/badge.svg)
 ## Installation
 
