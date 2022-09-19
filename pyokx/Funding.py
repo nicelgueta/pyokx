@@ -358,7 +358,6 @@ class Funding(APIComponent):
     def get_saving_balance(self, ccy: str = None, use_proxy: bool = False) -> APIReturn:
         """
         Get saving balance
-        Only the assets in the funding account can be used for saving.
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
         """
@@ -380,6 +379,7 @@ class Funding(APIComponent):
     ) -> APIReturn:
         """
         Savings purchase/redemption
+        Only the assets in the funding account can be used for saving.
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
         """

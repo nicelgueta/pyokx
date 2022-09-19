@@ -12,7 +12,7 @@ class Earn(APIComponent):
     ) -> APIReturn:
         """
         Get offers
-        Rate Limit: 6 requests per second
+        Rate Limit: 3 requests per second
         Rate limit rule: UserID
         """
         kwargs = {
@@ -114,7 +114,7 @@ class Earn(APIComponent):
     ) -> APIReturn:
         """
         Get active orders
-        Rate Limit: 6 requests per second
+        Rate Limit: 3 requests per second
         Rate limit rule: UserID
         """
         kwargs = {
@@ -142,7 +142,7 @@ class Earn(APIComponent):
     ) -> APIReturn:
         """
         Get order history
-        Rate Limit: 6 requests per second
+        Rate Limit: 3 requests per second
         Rate limit rule: UserID
         """
         kwargs = {

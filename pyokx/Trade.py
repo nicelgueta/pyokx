@@ -431,6 +431,7 @@ class Trade(APIComponent):
         tag: str = None,
         reduceOnly: bool = None,
         tgtCcy: str = None,
+        clOrdId: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -503,6 +504,7 @@ class Trade(APIComponent):
         self,
         ordType: str,
         algoId: str = None,
+        clOrdId: str = None,
         instType: str = None,
         instId: str = None,
         after: str = None,

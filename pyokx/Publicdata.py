@@ -302,6 +302,7 @@ class Publicdata(APIComponent):
         tdMode: str,
         uly: str = None,
         instId: str = None,
+        ccy: str = None,
         tier: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
