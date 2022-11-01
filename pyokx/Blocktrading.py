@@ -33,6 +33,7 @@ class Blocktrading(APIComponent):
         side: str,
         anonymous: bool = None,
         clRfqId: str = None,
+        allowPartialExecution: bool = None,
         tgtCcy: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
@@ -129,7 +130,13 @@ class Blocktrading(APIComponent):
         return self.request(details)
 
     def execute_quote(
-        self, rfqId: str, quoteId: str, use_proxy: bool = False
+        self,
+        rfqId: str,
+        quoteId: str,
+        instId: str,
+        sz: str,
+        legs: List[dict] = None,
+        use_proxy: bool = False,
     ) -> APIReturn:
         """
         Execute Quote
@@ -154,8 +161,9 @@ class Blocktrading(APIComponent):
         self,
         instType: str,
         data: List[dict],
-        uly: str = None,
+        instFamily: str = None,
         instId: str = None,
+        includeAll: bool = None,
         maxBlockSz: str = None,
         makerPxBand: str = None,
         use_proxy: bool = False,
@@ -370,6 +378,8 @@ class Blocktrading(APIComponent):
         state: str = None,
         beginId: str = None,
         endId: str = None,
+        beginTs: str = None,
+        endTs: str = None,
         limit: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:

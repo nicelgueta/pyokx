@@ -4,7 +4,11 @@ from .base import APIComponent, APIReturn, EndpointDetails
 
 class Marketdata(APIComponent):
     def get_tickers(
-        self, instType: str, uly: str = None, use_proxy: bool = False
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        use_proxy: bool = False,
     ) -> APIReturn:
         """
         Get tickers
@@ -83,6 +87,26 @@ class Marketdata(APIComponent):
         }
         details = EndpointDetails(
             request_path="/api/v5/market/books",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def get_order_lite_book(self, instId: str, use_proxy: bool = False) -> APIReturn:
+        """
+        Get order lite book
+        Retrieve order top 25 book of the instrument more quickly
+        Rate Limit: 6 requests per 1 seconds
+        Rate limit rule: IP
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/market/books-lite",
             method="GET",
             params=kwargs,
             use_proxy=use_proxy,
@@ -173,6 +197,34 @@ class Marketdata(APIComponent):
         )
         return self.request(details)
 
+    def get_index_candlesticks_history(
+        self,
+        instId: str,
+        after: str = None,
+        before: str = None,
+        bar: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
+        """
+        Get index candlesticks history
+        Retrieve the candlestick charts of the index from recent years.
+        Rate Limit: 10 requests per 2 seconds
+        Rate limit rule: IP
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/market/history-index-candles",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
     def get_mark_price_candlesticks(
         self,
         instId: str,
@@ -195,6 +247,34 @@ class Marketdata(APIComponent):
         }
         details = EndpointDetails(
             request_path="/api/v5/market/mark-price-candles",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def get_mark_price_candlesticks_history(
+        self,
+        instId: str,
+        after: str = None,
+        before: str = None,
+        bar: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
+        """
+        Get mark price candlesticks history
+        Retrieve the candlestick charts of mark price from recent years.
+        Rate Limit: 10 requests per 2 seconds
+        Rate limit rule: IP
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/market/history-mark-price-candles",
             method="GET",
             params=kwargs,
             use_proxy=use_proxy,
@@ -332,7 +412,11 @@ class Marketdata(APIComponent):
         return self.request(details)
 
     def get_block_tickers(
-        self, instType: str, uly: str = None, use_proxy: bool = False
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        use_proxy: bool = False,
     ) -> APIReturn:
         """
         Get block tickers

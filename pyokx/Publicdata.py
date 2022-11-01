@@ -7,6 +7,7 @@ class Publicdata(APIComponent):
         self,
         instType: str,
         uly: str = None,
+        instFamily: str = None,
         instId: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
@@ -14,7 +15,7 @@ class Publicdata(APIComponent):
         Get instruments
         Retrieve a list of instruments with open contracts.
         Rate Limit: 20 requests per 2 seconds
-        Rate limit rule: IP +instrumentType
+        Rate limit rule: IP + instrumentType
         """
         kwargs = {
             k: v
@@ -32,7 +33,8 @@ class Publicdata(APIComponent):
     def get_delivery_exercise_history(
         self,
         instType: str,
-        uly: str,
+        uly: str = None,
+        instFamily: str = None,
         after: str = None,
         before: str = None,
         limit: str = None,
@@ -40,9 +42,9 @@ class Publicdata(APIComponent):
     ) -> APIReturn:
         """
         Get delivery/exercise history
-        Retrieve the estimated delivery price of the last 3 months, which will only have a return value one hour before the delivery/exercise.
+        Retrieve delivery records of Futures and exercise records of Options in the last 3 months.
         Rate Limit: 40 requests per 2 seconds
-        Rate limit rule: IP +(instrumentType、uly)
+        Rate limit rule: IP + (instrumentType + uly)
         """
         kwargs = {
             k: v
@@ -61,6 +63,7 @@ class Publicdata(APIComponent):
         self,
         instType: str,
         uly: str = None,
+        instFamily: str = None,
         instId: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
@@ -151,7 +154,11 @@ class Publicdata(APIComponent):
         return self.request(details)
 
     def get_option_market_data(
-        self, uly: str, expTime: str = None, use_proxy: bool = False
+        self,
+        uly: str = None,
+        instFamily: str = None,
+        expTime: str = None,
+        use_proxy: bool = False,
     ) -> APIReturn:
         """
         Get option market data
@@ -240,6 +247,7 @@ class Publicdata(APIComponent):
         self,
         instType: str,
         uly: str = None,
+        instFamily: str = None,
         alias: str = None,
         mgnMode: str = None,
         instId: str = None,
@@ -273,6 +281,7 @@ class Publicdata(APIComponent):
         self,
         instType: str,
         uly: str = None,
+        instFamily: str = None,
         instId: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
@@ -301,6 +310,7 @@ class Publicdata(APIComponent):
         instType: str,
         tdMode: str,
         uly: str = None,
+        instFamily: str = None,
         instId: str = None,
         ccy: str = None,
         tier: str = None,
@@ -308,7 +318,7 @@ class Publicdata(APIComponent):
     ) -> APIReturn:
         """
         Get position tiers
-        Retrieve position tiers information， maximum leverage depends on your borrowings and margin ratio.
+        Retrieve position tiers information, maximum leverage depends on your borrowings and margin ratio.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: IP
         """
@@ -388,9 +398,10 @@ class Publicdata(APIComponent):
     def get_insurance_fund(
         self,
         instType: str,
-        type: str = None,
         uly: str = None,
+        instFamily: str = None,
         ccy: str = None,
+        type: str = None,
         before: str = None,
         after: str = None,
         limit: str = None,
@@ -426,7 +437,7 @@ class Publicdata(APIComponent):
     ) -> APIReturn:
         """
         Unit convert
-        Convert currency to contract, or contract to currency.
+        Convert the crypto value to the number of contracts, or vice versa
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: IP
         """

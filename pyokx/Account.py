@@ -384,6 +384,7 @@ class Account(APIComponent):
         instType: str,
         instId: str = None,
         uly: str = None,
+        instFamily: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -655,7 +656,11 @@ class Account(APIComponent):
         return self.request(details)
 
     def get_pm_limitation(
-        self, instType: str, uly: str, use_proxy: bool = False
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        use_proxy: bool = False,
     ) -> APIReturn:
         """
         Get PM limitation

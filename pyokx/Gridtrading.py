@@ -19,8 +19,8 @@ class Gridtrading(APIComponent):
         """
         Place grid algo order
         Rate Limit: 20 requests per 2 seconds
-        Derivatives rate limit rule: UserID +(instrumentType、underlying)
-        Spot & Margin rate limit rule: UserID +(instrumentType、instrumentID)
+        Derivatives rate limit rule: UserID + (instrumentType + underlying)
+        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
         """
         kwargs = {
             k: v
@@ -47,7 +47,7 @@ class Gridtrading(APIComponent):
         Amend grid algo order
         Supported contract grid algo order amendment.
         Rate Limit: 20 requests per 2 seconds
-        Derivatives rate limit rule: UserID +(instrumentType、underlying)
+        Derivatives rate limit rule: UserID + (instrumentType + underlying)
         """
         kwargs = {
             k: v
@@ -74,8 +74,8 @@ class Gridtrading(APIComponent):
         Stop grid algo order
         A maximum of 10 orders can be canceled per request.
         Rate Limit: 20 requests per 2 seconds
-        Derivatives rate limit rule: UserID +(instrumentType、underlying)
-        Spot & Margin rate limit rule: UserID +(instrumentType、instrumentID)
+        Derivatives rate limit rule: UserID + (instrumentType + underlying)
+        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
         """
         kwargs = {
             k: v

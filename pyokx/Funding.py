@@ -90,7 +90,7 @@ class Funding(APIComponent):
         Failure of the request does not mean the transfer has failed. Recommend to call "Get funds transfer state" to confirm the status.
 
                         Rate Limit: 1 request per second
-                        Rate limit rule: UserID + Currency
+                        Rate limit rule: UserID +  Currency
         """
         kwargs = {
             k: v
@@ -207,6 +207,7 @@ class Funding(APIComponent):
         ccy: str = None,
         depId: str = None,
         txId: str = None,
+        type: str = None,
         state: str = None,
         after: str = None,
         before: str = None,
@@ -310,6 +311,7 @@ class Funding(APIComponent):
         wdId: str = None,
         clientId: str = None,
         txId: str = None,
+        type: str = None,
         state: str = None,
         after: str = None,
         before: str = None,

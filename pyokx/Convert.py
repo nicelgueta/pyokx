@@ -56,7 +56,7 @@ class Convert(APIComponent):
     ) -> APIReturn:
         """
         Estimate quote
-        Rate Limit: 2 requests per second
+        Rate Limit: 10 requests per second
         Rate limit rule: UserID
         """
         kwargs = {
@@ -86,7 +86,7 @@ class Convert(APIComponent):
     ) -> APIReturn:
         """
         Convert trade
-        Rate Limit: 2 requests per second
+        Rate Limit: 10 requests per second
         Rate limit rule: UserID
         """
         kwargs = {
