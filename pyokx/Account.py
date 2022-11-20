@@ -35,7 +35,7 @@ class Account(APIComponent):
     ) -> APIReturn:
         """
         Get positions
-        Retrieve information on your positions. When the account is in net mode, net positions will be displayed, and when the account is in long/short mode, long or short positions will be displayed.
+        Retrieve information on your positions. When the account is in net mode, net positions will be displayed, and when the account is in long/short mode, long or short positions will be displayed. Return in reverse chronological order using ctime.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: UserID
         """
@@ -227,14 +227,21 @@ class Account(APIComponent):
         use_proxy: bool = False,
     ) -> APIReturn:
         """
-        Set leverage
-        The following are the setting leverage cases for an instrument:
-        Set leverage for isolated MARGIN at pairs level.
-        Set leverage for cross MARGIN in Single-currency margin at pairs level.
-        Set leverage for cross MARGIN in Multi-currency margin at currency level.
-        Set leverage for cross/isolated FUTURES/SWAP at underlying/contract level.
-        Rate Limit: 20 requests per 2 seconds
-        Rate limit rule: UserID
+                        Set leverage
+                        There are 9 different scenarios for leverage setting:
+        1. Set leverage for MARGIN instruments under isolated-margin trade mode at pairs level.
+        2. Set leverage for MARGIN instruments under cross-margin trade mode and Single-currency margin account mode at pairs level.
+        3. Set leverage for MARGIN instruments under cross-margin trade mode and Multi-currency margin at currency level.
+        4. Set leverage for FUTURES instruments under cross-margin trade mode at underlying level.
+        5. Set leverage for FUTURES instruments under isolated-margin trade mode and buy/sell position mode at contract level.
+        6. Set leverage for FUTURES instruments under isolated-margin trade mode and long/short position mode at contract and position side level.
+        7. Set leverage for SWAP instruments under cross-margin trade at contract level.
+        8. Set leverage for SWAP instruments under isolated-margin trade mode and buy/sell position mode at contract level.
+        9. Set leverage for SWAP instruments under isolated-margin trade mode and long/short position mode at contract and position side level.
+                        Note that the request parameter posSide is only required when margin mode is isolated in long/short position mode for FUTURES/SWAP instruments (see scenario 6 and 9 above).
+        Please refer to the request examples on the right side for each case.
+                        Rate Limit: 20 requests per 2 seconds
+                        Rate limit rule: UserID
         """
         kwargs = {
             k: v
@@ -253,10 +260,10 @@ class Account(APIComponent):
         self,
         instId: str,
         tdMode: str,
-        ccy: str = None,
         px: str = None,
         leverage: str = None,
         unSpotOffset: bool = None,
+        ccy: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -284,9 +291,9 @@ class Account(APIComponent):
         self,
         instId: str,
         tdMode: str,
-        ccy: str = None,
         reduceOnly: bool = None,
         unSpotOffset: bool = None,
+        ccy: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -610,6 +617,7 @@ class Account(APIComponent):
         self,
         instType: str = None,
         inclRealPos: bool = None,
+        spotOffsetType: str = None,
         simPos: list = None,
         instId: str = None,
         pos: str = None,

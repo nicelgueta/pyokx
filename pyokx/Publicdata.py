@@ -6,9 +6,9 @@ class Publicdata(APIComponent):
     def get_instruments(
         self,
         instType: str,
+        instId: str = None,
         uly: str = None,
         instFamily: str = None,
-        instId: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -33,11 +33,11 @@ class Publicdata(APIComponent):
     def get_delivery_exercise_history(
         self,
         instType: str,
-        uly: str = None,
-        instFamily: str = None,
         after: str = None,
         before: str = None,
         limit: str = None,
+        uly: str = None,
+        instFamily: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -62,9 +62,9 @@ class Publicdata(APIComponent):
     def get_open_interest(
         self,
         instType: str,
+        instId: str = None,
         uly: str = None,
         instFamily: str = None,
-        instId: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -155,9 +155,9 @@ class Publicdata(APIComponent):
 
     def get_option_market_data(
         self,
+        expTime: str = None,
         uly: str = None,
         instFamily: str = None,
-        expTime: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -246,9 +246,6 @@ class Publicdata(APIComponent):
     def get_liquidation_orders(
         self,
         instType: str,
-        uly: str = None,
-        instFamily: str = None,
-        alias: str = None,
         mgnMode: str = None,
         instId: str = None,
         ccy: str = None,
@@ -256,6 +253,9 @@ class Publicdata(APIComponent):
         before: str = None,
         after: str = None,
         limit: str = None,
+        uly: str = None,
+        instFamily: str = None,
+        alias: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -309,11 +309,11 @@ class Publicdata(APIComponent):
         self,
         instType: str,
         tdMode: str,
+        tier: str = None,
         uly: str = None,
         instFamily: str = None,
         instId: str = None,
         ccy: str = None,
-        tier: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -398,13 +398,13 @@ class Publicdata(APIComponent):
     def get_insurance_fund(
         self,
         instType: str,
-        uly: str = None,
-        instFamily: str = None,
-        ccy: str = None,
         type: str = None,
         before: str = None,
         after: str = None,
         limit: str = None,
+        uly: str = None,
+        instFamily: str = None,
+        ccy: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -430,9 +430,9 @@ class Publicdata(APIComponent):
         self,
         instId: str,
         sz: str,
-        px: str = None,
         type: str = None,
         unit: str = None,
+        px: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """

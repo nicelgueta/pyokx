@@ -287,7 +287,7 @@ class Marketdata(APIComponent):
         """
         Get trades
         Retrieve the recent transactions of an instrument.
-        Rate Limit: 20 requests per 2 seconds
+        Rate Limit: 100 requests per 2 seconds
         Rate limit rule: IP
         """
         kwargs = {

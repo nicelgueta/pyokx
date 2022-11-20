@@ -20,7 +20,7 @@ class Gridtrading(APIComponent):
         Place grid algo order
         Rate Limit: 20 requests per 2 seconds
         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+        Spot & Margin rate limit rule: UserID + instrumentID
         """
         kwargs = {
             k: v
@@ -75,7 +75,7 @@ class Gridtrading(APIComponent):
         A maximum of 10 orders can be canceled per request.
         Rate Limit: 20 requests per 2 seconds
         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+        Spot & Margin rate limit rule: UserID + instrumentID
         """
         kwargs = {
             k: v
@@ -291,8 +291,8 @@ class Gridtrading(APIComponent):
         self,
         algoOrdType: str,
         instId: str,
-        direction: str = None,
         duration: str = None,
+        direction: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """

@@ -10,14 +10,14 @@ class Trade(APIComponent):
         side: str,
         ordType: str,
         sz: str,
-        posSide: str = None,
-        px: str = None,
         ccy: str = None,
         clOrdId: str = None,
         tag: str = None,
         reduceOnly: bool = None,
         tgtCcy: str = None,
         banAmend: bool = None,
+        posSide: str = None,
+        px: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -25,7 +25,7 @@ class Trade(APIComponent):
         You can place an order only if you have sufficient funds.
         Rate Limit: 60 requests per 2 seconds
         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+        Spot & Margin rate limit rule: UserID + instrumentID
         """
         kwargs = {
             k: v
@@ -47,14 +47,14 @@ class Trade(APIComponent):
         side: str,
         ordType: str,
         sz: str,
-        posSide: str = None,
-        px: str = None,
         ccy: str = None,
         clOrdId: str = None,
         tag: str = None,
         reduceOnly: bool = None,
         tgtCcy: str = None,
         banAmend: bool = None,
+        posSide: str = None,
+        px: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -62,7 +62,7 @@ class Trade(APIComponent):
                         Place orders in batches. Maximum 20 orders can be placed per request. Request parameters should be passed in the form of an array.
                         Rate Limit: 300 orders per 2 seconds
                         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-                        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+                        Spot & Margin rate limit rule: UserID + instrumentID
 
         Unlike other endpoints, the rate limit of this endpoint is determined by the number of orders. If there is only one order in the request, it will consume the rate limit of `Place order`.
 
@@ -92,7 +92,7 @@ class Trade(APIComponent):
         Cancel an incomplete order.
         Rate Limit: 60 requests per 2 seconds
         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+        Spot & Margin rate limit rule: UserID + instrumentID
         """
         kwargs = {
             k: v
@@ -119,7 +119,7 @@ class Trade(APIComponent):
                         Cancel incomplete orders in batches. Maximum 20 orders can be canceled per request. Request parameters should be passed in the form of an array.
                         Rate Limit: 300 orders per 2 seconds
                         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-                        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+                        Spot & Margin rate limit rule: UserID + instrumentID
 
         Unlike other endpoints, the rate limit of this endpoint is determined by the number of orders. If there is only one order in the request, it will consume the rate limit of `Cancel order`.
 
@@ -140,12 +140,12 @@ class Trade(APIComponent):
     def amend_order(
         self,
         instId: str,
+        cxlOnFail: bool = None,
+        reqId: str = None,
         ordId: str = None,
         clOrdId: str = None,
         newSz: str = None,
         newPx: str = None,
-        cxlOnFail: bool = None,
-        reqId: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -153,7 +153,7 @@ class Trade(APIComponent):
         Amend an incomplete order.
         Rate Limit: 60 requests per 2 seconds
         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+        Spot & Margin rate limit rule: UserID + instrumentID
         """
         kwargs = {
             k: v
@@ -171,12 +171,12 @@ class Trade(APIComponent):
     def amend_multiple_orders(
         self,
         instId: str,
+        cxlOnFail: bool = None,
+        reqId: str = None,
         ordId: str = None,
         clOrdId: str = None,
         newSz: str = None,
         newPx: str = None,
-        cxlOnFail: bool = None,
-        reqId: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -184,7 +184,7 @@ class Trade(APIComponent):
                         Amend incomplete orders in batches. Maximum 20 orders can be amended per request. Request parameters should be passed in the form of an array.
                         Rate Limit: 300 orders per 2 seconds
                         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-                        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+                        Spot & Margin rate limit rule: UserID + instrumentID
 
         Unlike other endpoints, the rate limit of this endpoint is determined by the number of orders. If there is only one order in the request, it will consume the rate limit of `Amend order`.
 
@@ -206,11 +206,11 @@ class Trade(APIComponent):
         self,
         instId: str,
         mgnMode: str,
-        posSide: str = None,
-        ccy: str = None,
         autoCxl: bool = None,
         clOrdId: str = None,
         tag: str = None,
+        posSide: str = None,
+        ccy: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -218,7 +218,7 @@ class Trade(APIComponent):
         Close all positions of an instrument via a market order.
         Rate Limit: 20 requests per 2 seconds
         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+        Spot & Margin rate limit rule: UserID + instrumentID
         """
         kwargs = {
             k: v
@@ -245,7 +245,7 @@ class Trade(APIComponent):
         Retrieve order details.
         Rate Limit: 60 requests per 2 seconds
         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+        Spot & Margin rate limit rule: UserID + instrumentID
         """
         kwargs = {
             k: v
@@ -435,12 +435,12 @@ class Trade(APIComponent):
         side: str,
         ordType: str,
         sz: str,
-        posSide: str = None,
         ccy: str = None,
         tag: str = None,
         reduceOnly: bool = None,
         tgtCcy: str = None,
         clOrdId: str = None,
+        posSide: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -448,7 +448,7 @@ class Trade(APIComponent):
         The algo order includes trigger order, oco order, conditional order,iceberg order, twap order and trailing order.
         Rate Limit: 20 requests per 2 seconds
         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+        Spot & Margin rate limit rule: UserID + instrumentID
         """
         kwargs = {
             k: v
@@ -471,7 +471,7 @@ class Trade(APIComponent):
         Cancel unfilled algo orders (not including Iceberg order, TWAP order, Trailing Stop order). A maximum of 10 orders can be canceled per request. Request parameters should be passed in the form of an array.
         Rate Limit: 20 requests per 2 seconds
         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+        Spot & Margin rate limit rule: UserID + instrumentID
         """
         kwargs = {
             k: v
@@ -494,7 +494,7 @@ class Trade(APIComponent):
         Cancel unfilled algo orders (including Iceberg order, TWAP order, Trailing Stop order). A maximum of 10 orders can be canceled per request. Request parameters should be passed in the form of an array.
         Rate Limit: 20 requests per 2 seconds
         Derivatives rate limit rule: UserID + (instrumentType + underlying)
-        Spot & Margin rate limit rule: UserID + (instrumentType + instrumentID)
+        Spot & Margin rate limit rule: UserID + instrumentID
         """
         kwargs = {
             k: v
@@ -543,13 +543,13 @@ class Trade(APIComponent):
     def get_algo_order_history(
         self,
         ordType: str,
-        state: str = None,
-        algoId: str = None,
         instType: str = None,
         instId: str = None,
         after: str = None,
         before: str = None,
         limit: str = None,
+        state: str = None,
+        algoId: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """

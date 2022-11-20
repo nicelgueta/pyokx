@@ -74,11 +74,11 @@ class Funding(APIComponent):
         amt: str,
         from_: str,
         to: str,
-        subAcct: str = None,
         type: str = None,
         loanTrans: bool = None,
         clientId: str = None,
         omitPosRisk: str = None,
+        subAcct: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -107,9 +107,9 @@ class Funding(APIComponent):
 
     def get_funds_transfer_state(
         self,
+        type: str = None,
         transId: str = None,
         clientId: str = None,
-        type: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """
@@ -241,6 +241,7 @@ class Funding(APIComponent):
         toAddr: str,
         fee: str,
         chain: str = None,
+        areaCode: str = None,
         clientId: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
