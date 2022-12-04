@@ -46,6 +46,27 @@ class Funding(APIComponent):
         )
         return self.request(details)
 
+    def get_non_tradable_assets(
+        self, ccy: str = None, use_proxy: bool = False
+    ) -> APIReturn:
+        """
+        Get non-tradable assets
+        Rate Limit: 6 requests per second
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/asset/non-tradable-assets",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
     def get_account_asset_valuation(
         self, ccy: str = None, use_proxy: bool = False
     ) -> APIReturn:
@@ -240,9 +261,9 @@ class Funding(APIComponent):
         dest: str,
         toAddr: str,
         fee: str,
+        clientId: str = None,
         chain: str = None,
         areaCode: str = None,
-        clientId: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:
         """

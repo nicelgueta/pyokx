@@ -331,6 +331,26 @@ class Marketdata(APIComponent):
         )
         return self.request(details)
 
+    def get_option_trades(self, instFamily: str, use_proxy: bool = False) -> APIReturn:
+        """
+        Get option trades
+        Retrieve the recent transactions of an instrument under same instFamily. The maximum is 100.
+        Rate Limit: 20 requests per 2 seconds
+        Rate limit rule: IP
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/market/option/instrument-family-trades",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
     def get_24h_total_volume(self, use_proxy: bool = False) -> APIReturn:
         """
         Get 24H total volume

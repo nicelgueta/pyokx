@@ -83,9 +83,7 @@ class Account(APIComponent):
         )
         return self.request(details)
 
-    def get_account_and_position_risk(
-        self, instType: str = None, use_proxy: bool = False
-    ) -> APIReturn:
+    def get_account_and_position_risk(self, use_proxy: bool = False) -> APIReturn:
         """
                         Get account and position risk
                         Get account and position risk
@@ -545,6 +543,57 @@ class Account(APIComponent):
         )
         return self.request(details)
 
+    def manual_borrow_and_repay_in_quick_margin_mode(
+        self, instId: str, ccy: str, side: str, amt: str, use_proxy: bool = False
+    ) -> APIReturn:
+        """
+        Manual borrow and repay in Quick Margin Mode
+        Rate Limit: 5 requests per 2 seconds
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/account/quick-margin-borrow-repay",
+            method="POST",
+            body=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def get_manual_borrow_and_repay_history_in_quick_margin_mode(
+        self,
+        instId: str = None,
+        ccy: str = None,
+        side: str = None,
+        after: str = None,
+        before: str = None,
+        begin: str = None,
+        end: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
+        """
+        Get manual borrow and repay history in Quick Margin Mode
+        Rate Limit: 5 requests per 2 seconds
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/account/quick-margin-borrow-repay-history",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
     def vip_loans_borrow_and_repay(
         self, ccy: str, side: str, amt: str, use_proxy: bool = False
     ) -> APIReturn:
@@ -592,6 +641,88 @@ class Account(APIComponent):
         )
         return self.request(details)
 
+    def get_vip_interest_accrued_data(
+        self,
+        ccy: str = None,
+        ordId: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
+        """
+        Get VIP interest accrued data
+        Rate Limit: 5 requests per 2 seconds
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/account/vip-interest-accrued",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def get_vip_loan_order_list(
+        self,
+        ordId: str = None,
+        state: str = None,
+        ccy: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
+        """
+        Get VIP loan order list
+        Rate Limit: 5次/2s
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/account/vip-loan-order-list",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def get_vip_loan_order_detail(
+        self,
+        ordId: str = None,
+        ccy: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
+        """
+        Get VIP loan order detail
+        Rate Limit: 5次/2s
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/account/vip-loan-order-detail",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
     def get_borrow_interest_and_limit(
         self, type: str = None, ccy: str = None, use_proxy: bool = False
     ) -> APIReturn:
@@ -613,16 +744,7 @@ class Account(APIComponent):
         )
         return self.request(details)
 
-    def position_builder(
-        self,
-        instType: str = None,
-        inclRealPos: bool = None,
-        spotOffsetType: str = None,
-        simPos: list = None,
-        instId: str = None,
-        pos: str = None,
-        use_proxy: bool = False,
-    ) -> APIReturn:
+    def position_builder(self, use_proxy: bool = False) -> APIReturn:
         """
                         Position builder
                         Calculates portfolio margin information for simulated position or current position of the user.
@@ -685,6 +807,26 @@ class Account(APIComponent):
             request_path="/api/v5/account/position-tiers",
             method="GET",
             params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def set_risk_offset_type(self, type: str, use_proxy: bool = False) -> APIReturn:
+        """
+        Set risk offset type
+        Configure the risk offset type in portfolio margin mode.
+        Rate Limit: 10 requests per 2 seconds
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/account/set-riskOffset-type",
+            method="POST",
+            body=kwargs,
             use_proxy=use_proxy,
         )
         return self.request(details)

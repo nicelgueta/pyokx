@@ -59,9 +59,7 @@ class SubAccount(APIComponent):
         )
         return self.request(details)
 
-    def get_sub_account_trading_balance(
-        self, subAcct: str, use_proxy: bool = False
-    ) -> APIReturn:
+    def get_sub_account_trading_balance(self, use_proxy: bool = False) -> APIReturn:
         """
         Get sub-account trading balance
         Query detailed balance info of Trading Account of a sub-account via the master account (applies to master accounts only)

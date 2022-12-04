@@ -3,7 +3,7 @@ from .base import APIComponent, APIReturn, EndpointDetails
 
 
 class Status(APIComponent):
-    def status(self, state: str = None, use_proxy: bool = False) -> APIReturn:
+    def status(self, use_proxy: bool = False) -> APIReturn:
         """
         Status
         Get event status of system upgrade

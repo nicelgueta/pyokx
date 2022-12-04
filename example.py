@@ -10,6 +10,7 @@ client = OKXClient(
     key = os.getenv('KEY'),
     secret = os.getenv('SECRET'),
     passphrase = os.getenv('PASSPHRASE'),
+    test=True # if using the test OKX environment
 )
 
 # create a component for the Account API by passing the client dependency
