@@ -595,7 +595,7 @@ class Account(APIComponent):
         return self.request(details)
 
     def vip_loans_borrow_and_repay(
-        self, ccy: str, side: str, amt: str, use_proxy: bool = False
+        self, ccy: str, side: str, amt: str, ordId: str = None, use_proxy: bool = False
     ) -> APIReturn:
         """
         VIP loans borrow and repay
@@ -662,6 +662,33 @@ class Account(APIComponent):
         }
         details = EndpointDetails(
             request_path="/api/v5/account/vip-interest-accrued",
+            method="GET",
+            params=kwargs,
+            use_proxy=use_proxy,
+        )
+        return self.request(details)
+
+    def get_vip_interest_deducted_data(
+        self,
+        ccy: str = None,
+        ordId: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
+        """
+        Get VIP interest deducted data
+        Rate Limit: 5 requests per 2 seconds
+        Rate limit rule: UserID
+        """
+        kwargs = {
+            k: v
+            for k, v in locals().items()
+            if k not in ["use_proxy", "self"] and v is not None
+        }
+        details = EndpointDetails(
+            request_path="/api/v5/account/vip-interest-deducted",
             method="GET",
             params=kwargs,
             use_proxy=use_proxy,

@@ -1,5 +1,6 @@
 # auto-generated code #
 from .base import APIComponent, APIReturn, EndpointDetails
+from typing import *
 
 
 class Gridtrading(APIComponent):
@@ -69,12 +70,7 @@ class Gridtrading(APIComponent):
         return self.request(details)
 
     def stop_grid_algo_order(
-        self,
-        algoId: str,
-        instId: str,
-        algoOrdType: str,
-        stopType: str,
-        use_proxy: bool = False,
+        self, body: List[dict] = None, use_proxy: bool = False
     ) -> APIReturn:
         """
         Stop grid algo order
@@ -83,11 +79,7 @@ class Gridtrading(APIComponent):
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
         """
-        kwargs = {
-            k: v
-            for k, v in locals().items()
-            if k not in ["use_proxy", "self"] and v is not None
-        }
+        kwargs = body
         details = EndpointDetails(
             request_path="/api/v5/tradingBot/grid/stop-order-algo",
             method="POST",

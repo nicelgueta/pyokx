@@ -1,5 +1,6 @@
 # auto-generated code #
 from .base import APIComponent, APIReturn, EndpointDetails
+from typing import *
 
 
 class Trade(APIComponent):
@@ -27,11 +28,13 @@ class Trade(APIComponent):
         use_proxy: bool = False,
     ) -> APIReturn:
         """
-        Place order
-        You can place an order only if you have sufficient funds.
-        Rate Limit: 60 requests per 2 seconds
-        Rate limit rule (except Options): UserID + Instrument ID
-        Rate limit rule (Options only): UserID + Instrument Family
+                        Place order
+                        You can place an order only if you have sufficient funds.
+        For leading contracts, this endpoint supports placement, but can't close positions.
+                        Rate Limit: 60 requests per 2 seconds
+                        Rate Limit of leading contracts: 1 requests per 2 seconds
+                        Rate limit rule (except Options): UserID + Instrument ID
+                        Rate limit rule (Options only): UserID + Instrument Family
         """
         kwargs = {
             k: v
@@ -47,43 +50,21 @@ class Trade(APIComponent):
         return self.request(details)
 
     def place_multiple_orders(
-        self,
-        instId: str,
-        side: str,
-        ordType: str,
-        sz: str,
-        tdMode: str,
-        banAmend: bool = None,
-        tpTriggerPxType: str = None,
-        slOrdPx: str = None,
-        slTriggerPx: str = None,
-        tpOrdPx: str = None,
-        tpTriggerPx: str = None,
-        slTriggerPxType: str = None,
-        tgtCcy: str = None,
-        reduceOnly: bool = None,
-        tag: str = None,
-        clOrdId: str = None,
-        ccy: str = None,
-        posSide: str = None,
-        px: str = None,
-        use_proxy: bool = False,
+        self, body: List[dict] = None, use_proxy: bool = False
     ) -> APIReturn:
         """
                         Place multiple orders
                         Place orders in batches. Maximum 20 orders can be placed per request. Request parameters should be passed in the form of an array.
+        For leading contracts, this endpoint supports placement, but can't close positions.
                         Rate Limit: 300 orders per 2 seconds
+                        Rate Limit of leading contracts: 1 requests per 2 seconds
                         Rate limit rule (except Options): UserID + Instrument ID
                         Rate limit rule (Options only): UserID + Instrument Family
 
         Unlike other endpoints, the rate limit of this endpoint is determined by the number of orders. If there is only one order in the request, it will consume the rate limit of `Place order`.
 
         """
-        kwargs = {
-            k: v
-            for k, v in locals().items()
-            if k not in ["use_proxy", "self"] and v is not None
-        }
+        kwargs = body
         details = EndpointDetails(
             request_path="/api/v5/trade/batch-orders",
             method="POST",
@@ -120,11 +101,7 @@ class Trade(APIComponent):
         return self.request(details)
 
     def cancel_multiple_orders(
-        self,
-        instId: str,
-        ordId: str = None,
-        clOrdId: str = None,
-        use_proxy: bool = False,
+        self, body: List[dict] = None, use_proxy: bool = False
     ) -> APIReturn:
         """
                         Cancel multiple orders
@@ -136,11 +113,7 @@ class Trade(APIComponent):
         Unlike other endpoints, the rate limit of this endpoint is determined by the number of orders. If there is only one order in the request, it will consume the rate limit of `Cancel order`.
 
         """
-        kwargs = {
-            k: v
-            for k, v in locals().items()
-            if k not in ["use_proxy", "self"] and v is not None
-        }
+        kwargs = body
         details = EndpointDetails(
             request_path="/api/v5/trade/cancel-batch-orders",
             method="POST",
@@ -164,6 +137,7 @@ class Trade(APIComponent):
         Amend order
         Amend an incomplete order.
         Rate Limit: 60 requests per 2 seconds
+        Rate Limit of leading contracts: 1 requests per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
         """
@@ -181,31 +155,20 @@ class Trade(APIComponent):
         return self.request(details)
 
     def amend_multiple_orders(
-        self,
-        instId: str,
-        cxlOnFail: bool = None,
-        reqId: str = None,
-        ordId: str = None,
-        clOrdId: str = None,
-        newSz: str = None,
-        newPx: str = None,
-        use_proxy: bool = False,
+        self, body: List[dict] = None, use_proxy: bool = False
     ) -> APIReturn:
         """
                         Amend multiple orders
                         Amend incomplete orders in batches. Maximum 20 orders can be amended per request. Request parameters should be passed in the form of an array.
                         Rate Limit: 300 orders per 2 seconds
+                        Rate Limit of leading contracts: 1 requests per 2 seconds
                         Rate limit rule (except Options): UserID + Instrument ID
                         Rate limit rule (Options only): UserID + Instrument Family
 
         Unlike other endpoints, the rate limit of this endpoint is determined by the number of orders. If there is only one order in the request, it will consume the rate limit of `Amend order`.
 
         """
-        kwargs = {
-            k: v
-            for k, v in locals().items()
-            if k not in ["use_proxy", "self"] and v is not None
-        }
+        kwargs = body
         details = EndpointDetails(
             request_path="/api/v5/trade/amend-batch-orders",
             method="POST",
@@ -321,7 +284,7 @@ class Trade(APIComponent):
         use_proxy: bool = False,
     ) -> APIReturn:
         """
-        Get order history (last 7 days）
+        Get order history (last 7 days)
         Retrieve the completed order data for the last 7 days, and the incomplete orders that have been canceled are only reserved for 2 hours.
         Rate Limit: 40 requests per 2 seconds
         Rate limit rule: UserID
@@ -477,6 +440,7 @@ class Trade(APIComponent):
         Place algo order
         The algo order includes trigger order, oco order, conditional order,iceberg order, twap order and trailing order.
         Rate Limit: 20 requests per 2 seconds
+        Rate Limit of leading contracts: 1 requests per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
         """
@@ -494,7 +458,7 @@ class Trade(APIComponent):
         return self.request(details)
 
     def cancel_algo_order(
-        self, algoId: str, instId: str, use_proxy: bool = False
+        self, body: List[dict] = None, use_proxy: bool = False
     ) -> APIReturn:
         """
         Cancel algo order
@@ -503,11 +467,7 @@ class Trade(APIComponent):
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
         """
-        kwargs = {
-            k: v
-            for k, v in locals().items()
-            if k not in ["use_proxy", "self"] and v is not None
-        }
+        kwargs = body
         details = EndpointDetails(
             request_path="/api/v5/trade/cancel-algos",
             method="POST",
@@ -517,7 +477,7 @@ class Trade(APIComponent):
         return self.request(details)
 
     def cancel_advance_algo_order(
-        self, algoId: str, instId: str, use_proxy: bool = False
+        self, body: List[dict] = None, use_proxy: bool = False
     ) -> APIReturn:
         """
         Cancel advance algo order
@@ -526,11 +486,7 @@ class Trade(APIComponent):
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
         """
-        kwargs = {
-            k: v
-            for k, v in locals().items()
-            if k not in ["use_proxy", "self"] and v is not None
-        }
+        kwargs = body
         details = EndpointDetails(
             request_path="/api/v5/trade/cancel-advance-algos",
             method="POST",

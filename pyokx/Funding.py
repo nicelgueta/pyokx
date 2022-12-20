@@ -268,7 +268,7 @@ class Funding(APIComponent):
     ) -> APIReturn:
         """
         Withdrawal
-        Withdrawal of tokens. Sub-account does not support withdrawal.
+        Withdrawal of tokens. Common sub-account does not support withdrawal.
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
         """

@@ -77,7 +77,7 @@ class Marketdata(APIComponent):
         """
         Get order book
         Retrieve order book of the instrument.
-        Rate Limit: 20 requests per 2 seconds
+        Rate Limit: 40 requests per 2 seconds
         Rate limit rule: IP
         """
         kwargs = {

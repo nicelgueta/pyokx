@@ -34,6 +34,7 @@ class Earn(APIComponent):
         investData: list,
         ccy: str,
         amt: str,
+        tag: str = None,
         term: str = None,
         use_proxy: bool = False,
     ) -> APIReturn:

@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 import pandas as pd
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional, Union
 from typeguard import typechecked
 from .auth import OKXAuth
 import requests
@@ -43,7 +43,7 @@ class OKXClient(object):
         request_path: str,
         method: VALID_HTTP_METHOD,
         params: dict = None,
-        body: dict = None,
+        body: Optional[Union[Dict[str, Any], List[dict]]] = None,
         use_proxy: bool = False,
     ) -> requests.Response:
         """
@@ -59,7 +59,7 @@ class OKXClient(object):
         request_path: str,
         method: VALID_HTTP_METHOD,
         params: dict = None,
-        body: dict = None,
+        body: Optional[Union[Dict[str, Any], List[dict]]] = None,
     ) -> requests.PreparedRequest:
         params_to_encode = params if method == "GET" else body
         headers = self.auth.get_auth(method, request_path, params_to_encode).to_dict()
@@ -116,7 +116,7 @@ class EndpointDetails:
     request_path: str
     method: VALID_HTTP_METHOD
     params: Optional[Dict[str, Any]] = field(default=None)
-    body: Optional[Dict[str, Any]] = field(default=None)
+    body: Optional[Union[Dict[str, Any], List[dict]]] = field(default=None)
     use_proxy: bool = field(default=False)
 
 

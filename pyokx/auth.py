@@ -6,6 +6,7 @@ import base64
 import datetime
 import urllib.parse
 from typeguard import typechecked
+from typing import Any, Dict, List, Optional, Union
 
 
 @dataclass
@@ -49,7 +50,10 @@ class OKXAuth(object):
         self.ok_access_passphrase = phrase
 
     def get_auth(
-        self, method: str, request_path: str, body: dict = None
+        self,
+        method: str,
+        request_path: str,
+        body: Optional[Union[Dict[str, Any], List[dict]]] = None,
     ) -> OKXAuthHeaders:
         """
         Get the auth headers used for making a request to OKX
@@ -74,12 +78,15 @@ class OKXAuth(object):
 
     @staticmethod
     def _prehash_str(
-        timestamp: str, method: str, request_path: str, body: dict = None
+        timestamp: str,
+        method: str,
+        request_path: str,
+        body: Optional[Union[Dict[str, Any], List[dict]]] = None,
     ) -> str:
         if body:
             if method == "GET":
                 body_str = "?"
-                body_str += urllib.parse.urlencode(body)
+                body_str += urllib.parse.urlencode(body)  # type: ignore
             elif method == "POST":
                 body_str = json.dumps(body)
         else:
