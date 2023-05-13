@@ -1,15 +1,30 @@
 # auto-generated code #
 from .base import APIComponent, APIReturn, EndpointDetails
+from typing import *
 
 
-class Tradingdata(APIComponent):
-    def get_support_coin(self, use_proxy: bool = False) -> APIReturn:
+class TradingData(APIComponent):
+    def get_support_coin(
+        self,
+        contract: List[str] = None,
+        option: List[str] = None,
+        spot: List[str] = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-        Get support coin
+
         Retrieve the currencies supported by the trading data endpoints.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
+
+
+        Args:
+            contract: Currency supported by derivatives trading data
+            option: Currency supported by option trading data
+            spot: Currency supported by spot trading data
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -33,11 +48,24 @@ class Tradingdata(APIComponent):
         use_proxy: bool = False,
     ) -> APIReturn:
         """
-        Get taker volume
+
         Retrieve the taker volume for both buyers and sellers.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
+
+
+        Args:
+            ccy: Currency
+            instType: Instrument type SPOT,CONTRACTS
+            begin: Begin time, e.g. 1597026383085
+            end: End time, e.g. 1597026383011
+            period: Period, the default is 5m, e.g. [5m/1H/1D] 5m granularity can only
+                query data within two days at most 1H granularity can only query data
+                within 30 days at most 1D granularity can only query data within 180
+                days at most
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -60,11 +88,23 @@ class Tradingdata(APIComponent):
         use_proxy: bool = False,
     ) -> APIReturn:
         """
-        Get margin lending ratio
+
         Retrieve the ratio of cumulative amount between currency margin quote currency and base currency.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
+
+
+        Args:
+            ccy: Currency
+            begin: Begin time, e.g. 1597026383085
+            end: End time, e.g. 1597026383085
+            period: Period, the default is 5m, e.g. [5m/1H/1D] 5mgranularity can only
+                query data within two days at most 1H granularity can only query data
+                within 30 days at most 1D granularity can only query data within 180
+                days at most
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -87,11 +127,23 @@ class Tradingdata(APIComponent):
         use_proxy: bool = False,
     ) -> APIReturn:
         """
-        Get long/short ratio
+
         Retrieve the ratio of users with net long vs net short positions for futures and perpetual swaps.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
+
+
+        Args:
+            ccy: Currency
+            begin: Begin time, e.g. 1597026383085
+            end: End time, e.g. 1597026383011
+            period: Period, the default is 5m, e.g. [5m/1H/1D] 5m granularity can only
+                query data within two days at most 1H granularity can only query data
+                within 30 days at most 1D granularity can only query data within 180
+                days at most
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -114,11 +166,23 @@ class Tradingdata(APIComponent):
         use_proxy: bool = False,
     ) -> APIReturn:
         """
-        Get contracts open interest and volume
+
         Retrieve the open interest and trading volume for futures and perpetual swaps.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
+
+
+        Args:
+            ccy: Currency
+            begin: Begin time, e.g. 1597026383085
+            end: End time, e.g. 1597026383011
+            period: Period, the default is 5m, e.g. [5m/1H/1D] 5m granularity can only
+                query data within two days at most 1H granularity can only query data
+                within 30 days at most 1D granularity can only query data within 180
+                days at most
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -136,11 +200,19 @@ class Tradingdata(APIComponent):
         self, ccy: str, period: str = None, use_proxy: bool = False
     ) -> APIReturn:
         """
-        Get options open interest and volume
+
         Retrieve the open interest and trading volume for options.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
+
+
+        Args:
+            ccy: Currency
+            period: Period, the default is 8H. e.g. [8H/1D] Each granularity can only
+                query 72 pieces of data at the earliest
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -158,11 +230,19 @@ class Tradingdata(APIComponent):
         self, ccy: str, period: str = None, use_proxy: bool = False
     ) -> APIReturn:
         """
-        Get put/call ratio
+
         Retrieve the open interest ratio and trading volume ratio of calls vs puts.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
+
+
+        Args:
+            ccy: Currency
+            period: Period, the default is 8H. e.g. [8H/1D] Each granularity can only
+                query 72 pieces of data at the earliest
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -180,11 +260,19 @@ class Tradingdata(APIComponent):
         self, ccy: str, period: str = None, use_proxy: bool = False
     ) -> APIReturn:
         """
-        Get open interest and volume (expiry)
+
         Retrieve the open interest and trading volume of calls and puts for each upcoming expiration.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
+
+
+        Args:
+            ccy: Currency
+            period: Period, the default is 8H. e.g. [8H/1D] Each granularity can only
+                query 72 pieces of data at the earliest
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -202,11 +290,20 @@ class Tradingdata(APIComponent):
         self, ccy: str, expTime: str, period: str = None, use_proxy: bool = False
     ) -> APIReturn:
         """
-        Get open interest and volume (strike)
+
         Retrieve the taker volume for both buyers and sellers of calls and puts.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
+
+
+        Args:
+            ccy: Currency
+            expTime: Contract expiry date, the format is YYYYMMdd, e.g. 20210623
+            period: Period, the default is 8H. e.g. [8H/1D] Each granularity can only
+                query 72 pieces of data at the earliest
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -224,11 +321,19 @@ class Tradingdata(APIComponent):
         self, ccy: str, period: str = None, use_proxy: bool = False
     ) -> APIReturn:
         """
-        Get taker flow
+
         This shows the relative buy/sell volume for calls and puts. It shows whether traders are bullish or bearish on price and volatility.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
+
+
+        Args:
+            ccy: currency
+            period: period, the default is 8H. e.g. [8H/1D] Each granularity can only
+                query 72 pieces of data at the earliest
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()

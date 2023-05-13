@@ -5,10 +5,12 @@ from .base import APIComponent, APIReturn, EndpointDetails
 class Convert(APIComponent):
     def get_convert_currencies(self, use_proxy: bool = False) -> APIReturn:
         """
-        Get convert currencies
+
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
+                _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -26,10 +28,17 @@ class Convert(APIComponent):
         self, fromCcy: str, toCcy: str, use_proxy: bool = False
     ) -> APIReturn:
         """
-        Get convert currency pair
+
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
+
+
+        Args:
+            fromCcy: Currency to convert from, e.g. USDT
+            toCcy: Currency to convert to, e.g. BTC
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -55,10 +64,24 @@ class Convert(APIComponent):
         use_proxy: bool = False,
     ) -> APIReturn:
         """
-        Estimate quote
+
         Rate Limit: 10 requests per second
         Rate limit rule: UserID
+
+
+        Args:
+            baseCcy: Base currency, e.g. BTC in BTC-USDT
+            quoteCcy: Quote currency, e.g. USDT in BTC-USDT
+            side: Trade side based on baseCcy buy sell
+            rfqSz: RFQ amount
+            rfqSzCcy: RFQ currency
+            clQReqId: Client Order ID as assigned by the client A combination of case-
+                sensitive alphanumerics, all numbers, or all letters of up to 32
+                characters.
+            tag: Order tag Applicable to broker user
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -85,10 +108,25 @@ class Convert(APIComponent):
         use_proxy: bool = False,
     ) -> APIReturn:
         """
-        Convert trade
+
         Rate Limit: 10 requests per second
         Rate limit rule: UserID
+
+
+        Args:
+            quoteId: Quote ID
+            baseCcy: Base currency, e.g. BTC in BTC-USDT
+            quoteCcy: Quote currency, e.g. USDT in BTC-USDT
+            side: Trade side based on baseCcy buy sell
+            sz: Quote amount The quote amount should no more then RFQ amount
+            szCcy: Quote currency
+            clTReqId: Client Order ID as assigned by the client A combination of case-
+                sensitive alphanumerics, all numbers, or all letters of up to 32
+                characters.
+            tag: Order tag Applicable to broker user
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()
@@ -111,10 +149,21 @@ class Convert(APIComponent):
         use_proxy: bool = False,
     ) -> APIReturn:
         """
-        Get convert history
+
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
+
+
+        Args:
+            after: Pagination of data to return records earlier than the requested ts,
+                Unix timestamp format in milliseconds, e.g. 1597026383085
+            before: Pagination of data to return records newer than the requested ts, Unix
+                timestamp format in milliseconds, e.g. 1597026383085
+            limit: Number of results per request. The maximum is 100. The default is 100.
+            tag: Order tag Applicable to broker user
+        _____________
         """
+
         kwargs = {
             k: v
             for k, v in locals().items()

@@ -1,21 +1,21 @@
 from loguru import logger
 import sys
-from .Account import Account
-from .Blocktrading import Blocktrading
-from .Convert import Convert
-from .Earn import Earn
-from .Funding import Funding
-from .Gridtrading import Gridtrading
-from .Marketdata import Marketdata
-from .Publicdata import Publicdata
-from .Status import Status
-from .SubAccount import SubAccount
-from .Trade import Trade
-from .Tradingdata import Tradingdata
+from .account import Account
+from .block_trading import Blocktrading
+from .convert import Convert
+from .earn import Earn
+from .funding import Funding
+from .grid_trading import GridTrading
+from .market_data import MarketData
+from .public_data import PublicData
+from .status import Status
+from .subaccount import Subaccount
+from .trade import Trade
+from .trading_data import TradingData
 from .base import OKXClient
 
 
-__version__ = "0.4.0"
+__version__ = "0.7.0"
 
 
 def change_log_level(level: str = "INFO"):
@@ -31,13 +31,13 @@ __all__ = [
     "Convert",
     "Earn",
     "Funding",
-    "Gridtrading",
-    "Marketdata",
-    "Publicdata",
+    "GridTrading",
+    "MarketData",
+    "PublicData",
     "Status",
-    "SubAccount",
+    "Subaccount",
     "Trade",
-    "Tradingdata",
+    "TradingData",
     "change_log_level",
     "OKXClient",
 ]
