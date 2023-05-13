@@ -14,6 +14,12 @@ classifiers = [
 include = [
     "LICENSE",
 ]
+[tool.poetry.group.dev.dependencies]
+mkdocs-material = "^9.1.8"
+mkdocstrings = "^0.21.2"
+mkdocstrings-python = "^0.9.0"
+pyyaml = "^6.0"
+
 
 [tool.pytest.ini_options]
 addopts = "--cov=pyokx pyokx/tests/"

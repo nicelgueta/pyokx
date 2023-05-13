@@ -1,0 +1,1 @@
+::: pyokx.savings.Savings
