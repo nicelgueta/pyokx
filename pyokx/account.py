@@ -1,19 +1,18 @@
 # auto-generated code #
 from .base import APIComponent, APIReturn, EndpointDetails
-from typing import *
 
 
 class Account(APIComponent):
     def get_balance(self, ccy: str = None, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Retrieve a list of assets (with non-zero balance), remaining balance, and available amount in the trading account.
-        
+
         Interest-free quota and discount rates are public data and not displayed on the account interface.
-        
+
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Single currency or multiple currencies (no more than 20) separated
@@ -33,15 +32,20 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_positions(self, instType: str = None, instId: str = None, posId: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_positions(
+        self,
+        instType: str = None,
+        instId: str = None,
+        posId: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve information on your positions. When the account is in net mode, net positions will be displayed, and when the account is in long/short mode, long or short positions will be displayed. Return in reverse chronological order using ctime.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type MARGIN SWAP FUTURES OPTION instId will be checked
@@ -67,15 +71,25 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_positions_history(self, instType: str = None, instId: str = None, mgnMode: str = None, type_: str = None, posId: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_positions_history(
+        self,
+        instType: str = None,
+        instId: str = None,
+        mgnMode: str = None,
+        type_: str = None,
+        posId: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the updated position data for the last 3 months. Return in reverse chronological order using utime.
         Rate Limit: 1 request per 10 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type MARGIN SWAP FUTURES OPTION
@@ -107,18 +121,19 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_account_and_position_risk(self, instType: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_account_and_position_risk(
+        self, instType: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Get account and position risk
-        
+
         Obtain basic information about accounts and positions on the same time slice
-        
+
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type MARGIN SWAP FUTURES OPTION
@@ -137,15 +152,28 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_bills_details_last_7_days(self, instType: str = None, ccy: str = None, mgnMode: str = None, ctType: str = None, type_: str = None, subType: str = None, after: str = None, before: str = None, begin: str = None, end: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_bills_details_last_7_days(
+        self,
+        instType: str = None,
+        ccy: str = None,
+        mgnMode: str = None,
+        ctType: str = None,
+        type_: str = None,
+        subType: str = None,
+        after: str = None,
+        before: str = None,
+        begin: str = None,
+        end: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the bills of the account. The bill refers to all transaction records that result in changing the balance of an account. Pagination is supported, and the response is sorted with the most recent first. This endpoint can retrieve data from the last 7 days.
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type SPOT MARGIN SWAP FUTURES OPTION
@@ -201,15 +229,28 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_bills_details_last_3_months(self, instType: str = None, ccy: str = None, mgnMode: str = None, ctType: str = None, type_: str = None, subType: str = None, after: str = None, before: str = None, begin: str = None, end: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_bills_details_last_3_months(
+        self,
+        instType: str = None,
+        ccy: str = None,
+        mgnMode: str = None,
+        ctType: str = None,
+        type_: str = None,
+        subType: str = None,
+        after: str = None,
+        before: str = None,
+        begin: str = None,
+        end: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the account’s bills. The bill refers to all transaction records that result in changing the balance of an account. Pagination is supported, and the response is sorted with most recent first. This endpoint can retrieve data from the last 3 months.
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type SPOT MARGIN SWAP FUTURES OPTION
@@ -265,11 +306,10 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_account_configuration(self, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Retrieve current account configuration.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
@@ -288,16 +328,15 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def set_position_mode(self, posMode: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Single-currency mode and Multi-currency mode: FUTURES and SWAP support both long/short mode and net mode. In net mode, users can only have positions in one direction; In long/short mode, users can hold positions in long and short directions.
         Portfolio margin mode: FUTURES and SWAP only support net mode
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             posMode: Position mode long_short_mode: long/short, only applicable to
@@ -317,11 +356,18 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def set_leverage(self, lever: str, mgnMode: str, instId: str = None, ccy: str = None, posSide: str = None, use_proxy: bool = False) -> APIReturn:
+    def set_leverage(
+        self,
+        lever: str,
+        mgnMode: str,
+        instId: str = None,
+        ccy: str = None,
+        posSide: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         There are 9 different scenarios for leverage setting:
         1. Set leverage for MARGIN instruments under isolated-margin trade mode at pairs level.
         2. Set leverage for MARGIN instruments under cross-margin trade mode and Single-currency margin account mode at pairs level.
@@ -336,7 +382,7 @@ class Account(APIComponent):
         Please refer to the request examples on the right for each case.
         Rate limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             lever: Leverage
@@ -363,17 +409,25 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_maximum_buy_sell_amount_or_open_amount(self, instId: str, tdMode: str, ccy: str = None, px: str = None, leverage: str = None, unSpotOffset: bool = None, use_proxy: bool = False) -> APIReturn:
+    def get_maximum_buy_sell_amount_or_open_amount(
+        self,
+        instId: str,
+        tdMode: str,
+        ccy: str = None,
+        px: str = None,
+        leverage: str = None,
+        unSpotOffset: bool = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
-        
+
+
         Under the Portfolio Margin account, the cross mode of derivatives does not support the calculation of the maximum buy/sell amount or open amount.
-        
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instId: Single instrument or multiple instruments (no more than 5) separated
@@ -405,14 +459,22 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_maximum_available_tradable_amount(self, instId: str, tdMode: str, ccy: str = None, reduceOnly: bool = None, unSpotOffset: bool = None, quickMgnType: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_maximum_available_tradable_amount(
+        self,
+        instId: str,
+        tdMode: str,
+        ccy: str = None,
+        reduceOnly: bool = None,
+        unSpotOffset: bool = None,
+        quickMgnType: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instId: Single instrument or multiple instruments (no more than 5) separated
@@ -442,15 +504,24 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def increase_decrease_margin(self, instId: str, posSide: str, type_: str, amt: str, ccy: str = None, auto: bool = None, loanTrans: bool = None, use_proxy: bool = False) -> APIReturn:
+    def increase_decrease_margin(
+        self,
+        instId: str,
+        posSide: str,
+        type_: str,
+        amt: str,
+        ccy: str = None,
+        auto: bool = None,
+        loanTrans: bool = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Increase or decrease the margin of the isolated position. Margin reduction may result in the change of the actual leverage.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instId: Instrument ID
@@ -479,14 +550,15 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_leverage(self, instId: str, mgnMode: str, use_proxy: bool = False) -> APIReturn:
+    def get_leverage(
+        self, instId: str, mgnMode: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instId: Instrument ID Single instrument ID or multiple instrument IDs (no more
@@ -507,14 +579,15 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_the_maximum_loan_of_instrument(self, instId: str, mgnMode: str, mgnCcy: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_the_maximum_loan_of_instrument(
+        self, instId: str, mgnMode: str, mgnCcy: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instId: Single instrument or multiple instruments (no more than 5) separated
@@ -537,14 +610,20 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_fee_rates(self, instType: str, instId: str = None, uly: str = None, instFamily: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_fee_rates(
+        self,
+        instType: str,
+        instId: str = None,
+        uly: str = None,
+        instFamily: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type SPOT MARGIN SWAP FUTURES OPTION
@@ -566,14 +645,23 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_interest_accrued_data(self, type_: str = None, ccy: str = None, instId: str = None, mgnMode: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_interest_accrued_data(
+        self,
+        type_: str = None,
+        ccy: str = None,
+        instId: str = None,
+        mgnMode: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             type_: Loan type 1: VIP loans 2: Market loans Default is Market loans
@@ -601,15 +689,14 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_interest_rate(self, ccy: str = None, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Get the user's current leveraged currency borrowing interest rate
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Currency, e.g. BTC
@@ -628,15 +715,14 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def set_greeks_pa_bs(self, greeksType: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Set the display type of Greeks.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             greeksType: Display type of Greeks. PA: Greeks in coins BS: Black-Scholes Greeks
@@ -656,15 +742,16 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def isolated_margin_trading_settings(self, isoMode: str, type_: str, use_proxy: bool = False) -> APIReturn:
+    def isolated_margin_trading_settings(
+        self, isoMode: str, type_: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         You can set the currency margin and futures/perpetual Isolated margin trading mode
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             isoMode: Isolated margin trading settings automatic:Auto transfers
@@ -685,15 +772,16 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_maximum_withdrawals(self, ccy: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_maximum_withdrawals(
+        self, ccy: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Retrieve the maximum transferable amount from trading account to funding account. If no currency is specified, the transferable amount of all owned currencies will be returned.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Single currency or multiple currencies (no more than 20) separated
@@ -713,15 +801,21 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_account_risk_state(self, atRisk: str = None, atRiskIdx: list = None, atRiskMgn: list = None, ts: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_account_risk_state(
+        self,
+        atRisk: str = None,
+        atRiskIdx: list = None,
+        atRiskMgn: list = None,
+        ts: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Only applicable to Portfolio margin account
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             atRisk: Account risk status in auto-borrow mode true： the account is currently
@@ -745,14 +839,15 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def manual_borrow_and_repay_in_quick_margin_mode(self, instId: str, ccy: str, side: str, amt: str, use_proxy: bool = False) -> APIReturn:
+    def manual_borrow_and_repay_in_quick_margin_mode(
+        self, instId: str, ccy: str, side: str, amt: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USDT
@@ -774,14 +869,24 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_borrow_and_repay_history_in_quick_margin_mode(self, instId: str = None, ccy: str = None, side: str = None, after: str = None, before: str = None, begin: str = None, end: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_borrow_and_repay_history_in_quick_margin_mode(
+        self,
+        instId: str = None,
+        ccy: str = None,
+        side: str = None,
+        after: str = None,
+        before: str = None,
+        begin: str = None,
+        end: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USDT
@@ -809,15 +914,16 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def vip_loans_borrow_and_repay(self, ccy: str, side: str, amt: str, ordId: str = None, use_proxy: bool = False) -> APIReturn:
+    def vip_loans_borrow_and_repay(
+        self, ccy: str, side: str, amt: str, ordId: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Maximum number of borrowing orders for a single currency is 20
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Loan currency, e.g. BTC
@@ -839,14 +945,20 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_borrow_and_repay_history_for_vip_loans(self, ccy: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_borrow_and_repay_history_for_vip_loans(
+        self,
+        ccy: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Loan currency, e.g. BTC
@@ -870,14 +982,21 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_vip_interest_accrued_data(self, ccy: str = None, ordId: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_vip_interest_accrued_data(
+        self,
+        ccy: str = None,
+        ordId: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Loan currency, e.g. BTC Only applicable toMARGIN
@@ -902,14 +1021,21 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_vip_interest_deducted_data(self, ccy: str = None, ordId: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_vip_interest_deducted_data(
+        self,
+        ccy: str = None,
+        ordId: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Loan currency, e.g. BTC Only applicable toMARGIN
@@ -934,14 +1060,22 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_vip_loan_order_list(self, ordId: str = None, state: str = None, ccy: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_vip_loan_order_list(
+        self,
+        ordId: str = None,
+        state: str = None,
+        ccy: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             ordId: Order ID of borrowing
@@ -965,14 +1099,21 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_vip_loan_order_detail(self, ordId: str, ccy: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_vip_loan_order_detail(
+        self,
+        ordId: str,
+        ccy: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             ordId: Order ID of loan
@@ -997,14 +1138,15 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_borrow_interest_and_limit(self, type_: str = None, ccy: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_borrow_interest_and_limit(
+        self, type_: str = None, ccy: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             type_: Loan type 1: VIP loans 2: Market loans Default is Market loans
@@ -1024,16 +1166,24 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def position_builder(self, instType: str = None, inclRealPos: bool = None, spotOffsetType: str = None, simPos: list = None, instId: str = None, pos: str = None, use_proxy: bool = False) -> APIReturn:
+    def position_builder(
+        self,
+        instType: str = None,
+        inclRealPos: bool = None,
+        spotOffsetType: str = None,
+        simPos: list = None,
+        instId: str = None,
+        pos: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Calculates portfolio margin information for simulated position or current position of the user.
         You can add up to 200 simulated positions in one request.
         Rate Limit: 2 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type SWAP FUTURES OPTION
@@ -1060,15 +1210,14 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_greeks(self, ccy: str = None, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Retrieve a greeks list of all assets in the account.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Single currency, e.g. BTC.
@@ -1087,15 +1236,20 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_pm_position_limitation(self, instType: str, uly: str = None, instFamily: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_pm_position_limitation(
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve cross position limitation of SWAP/FUTURES/OPTION under Portfolio margin mode.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type SWAP FUTURES OPTION
@@ -1120,15 +1274,14 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def set_risk_offset_type(self, type_: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Configure the risk offset type in portfolio margin mode.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             type_: Risk offset type 1: Spot-derivatives (USDT) risk offset 2: Spot-
@@ -1148,11 +1301,10 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def activate_option(self, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
                 _____________
@@ -1170,15 +1322,16 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def set_auto_loan(self, autoLoan: bool = None, use_proxy: bool = False) -> APIReturn:
+    def set_auto_loan(
+        self, autoLoan: bool = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Only applicalbe to Multi-currency margin and Portfolio margin
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             autoLoan: Whether to automatically make loans Valid values are true, false The
@@ -1198,5 +1351,3 @@ class Account(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
-

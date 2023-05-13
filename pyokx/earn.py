@@ -1,15 +1,31 @@
 # auto-generated code #
 from .base import APIComponent, APIReturn, EndpointDetails
-from typing import *
 
 
 class Earn(APIComponent):
-    def get_offers(self, productId: str = None, protocolType: str = None, ccy: str = None, protocol: str = None, term: str = None, apy: str = None, earlyRedeem: bool = None, investData: list = None, bal: str = None, minAmt: str = None, maxAmt: str = None, earningData: list = None, earningType: str = None, state: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_offers(
+        self,
+        productId: str = None,
+        protocolType: str = None,
+        ccy: str = None,
+        protocol: str = None,
+        term: str = None,
+        apy: str = None,
+        earlyRedeem: bool = None,
+        investData: list = None,
+        bal: str = None,
+        minAmt: str = None,
+        maxAmt: str = None,
+        earningData: list = None,
+        earningType: str = None,
+        state: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 3 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             productId: Product ID
@@ -49,14 +65,23 @@ class Earn(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def purchase(self, productId: str, investData: list, ccy: str, amt: str, term: str = None, tag: str = None, ordId: str = None, use_proxy: bool = False) -> APIReturn:
+    def purchase(
+        self,
+        productId: str,
+        investData: list,
+        ccy: str,
+        amt: str,
+        term: str = None,
+        tag: str = None,
+        ordId: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 2 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             productId: Product ID
@@ -84,14 +109,20 @@ class Earn(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def redeem(self, ordId: str, protocolType: str, allowEarlyRedeem: bool = None, tag: str = None, use_proxy: bool = False) -> APIReturn:
+    def redeem(
+        self,
+        ordId: str,
+        protocolType: str,
+        allowEarlyRedeem: bool = None,
+        tag: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 2 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ordId: Order ID
@@ -113,17 +144,18 @@ class Earn(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def cancel_purchases_redemptions(self, ordId: str, protocolType: str, tag: str = None, use_proxy: bool = False) -> APIReturn:
+    def cancel_purchases_redemptions(
+        self, ordId: str, protocolType: str, tag: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
-        
+
+
         After cancelling, returning funds will go to the funding account.
-        
+
         Rate Limit: 2 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ordId: Order ID
@@ -144,14 +176,33 @@ class Earn(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_active_orders(self, productId: str = None, protocolType: str = None, ccy: str = None, state: str = None, ordId: str = None, protocol: str = None, term: str = None, apy: str = None, investData: list = None, amt: str = None, earningData: list = None, earningType: str = None, earnings: str = None, purchasedTime: str = None, estSettlementTime: str = None, cancelRedemptionDeadline: str = None, tag: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_active_orders(
+        self,
+        productId: str = None,
+        protocolType: str = None,
+        ccy: str = None,
+        state: str = None,
+        ordId: str = None,
+        protocol: str = None,
+        term: str = None,
+        apy: str = None,
+        investData: list = None,
+        amt: str = None,
+        earningData: list = None,
+        earningType: str = None,
+        earnings: str = None,
+        purchasedTime: str = None,
+        estSettlementTime: str = None,
+        cancelRedemptionDeadline: str = None,
+        tag: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 3 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             productId: Product ID
@@ -197,14 +248,22 @@ class Earn(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_order_history(self, productId: str = None, protocolType: str = None, ccy: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_order_history(
+        self,
+        productId: str = None,
+        protocolType: str = None,
+        ccy: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 3 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             productId: Product ID
@@ -230,5 +289,3 @@ class Earn(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
-

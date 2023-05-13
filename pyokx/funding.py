@@ -6,11 +6,11 @@ from typing import *
 class Funding(APIComponent):
     def get_currencies(self, ccy: str = None, use_proxy: bool = False) -> APIReturn:
         """
-    
-        Retrieve a list of all currencies. 
+
+        Retrieve a list of all currencies.
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Single currency or multiple currencies (no more than 20) separated
@@ -30,18 +30,17 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_balance(self, ccy: str = None, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Retrieve the funding account balances of all the assets and the amount that is available or on hold.
-        
+
         Only asset information of a currency with a balance greater than 0 will be returned.
-        
+
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Single currency or multiple currencies (no more than 20) separated
@@ -61,14 +60,15 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_non_tradable_assets(self, ccy: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_non_tradable_assets(
+        self, ccy: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Single currency or multiple currencies (no more than 20) separated
@@ -88,15 +88,16 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_account_asset_valuation(self, ccy: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_account_asset_valuation(
+        self, ccy: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         View account asset valuation
         Rate Limit: 1 request per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Asset valuation calculation unit BTC, USDT USD, CNY, JP, KRW, RUB, EUR
@@ -117,20 +118,31 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def funds_transfer(self, ccy: str, amt: str, from_: str, to: str, subAcct: str = None, type_: str = None, loanTrans: bool = None, clientId: str = None, omitPosRisk: str = None, use_proxy: bool = False) -> APIReturn:
+    def funds_transfer(
+        self,
+        ccy: str,
+        amt: str,
+        from_: str,
+        to: str,
+        subAcct: str = None,
+        type_: str = None,
+        loanTrans: bool = None,
+        clientId: str = None,
+        omitPosRisk: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Only API keys with Trade privilege can call this endpoint.
         This endpoint supports the transfer of funds between your funding account and trading account, and from the master account to sub-accounts.
         Sub-account can transfer out to master account by default. Need to call "Set Permission Of Transfer Out" to grant privilege first if you want sub-account transferring to another sub-account (sub-accounts need to belong to same master account.)
-        
+
         Failure of the request does not mean the transfer has failed. Recommend to call "Get funds transfer state" to confirm the status.
-        
+
         Rate Limit: 1 request per second
         Rate limit rule: UserID +  Currency
-        
+
 
         Args:
             ccy: Currency, e.g. USDT
@@ -166,15 +178,20 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_funds_transfer_state(self, transId: str = None, clientId: str = None, type_: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_funds_transfer_state(
+        self,
+        transId: str = None,
+        clientId: str = None,
+        type_: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the transfer state data of the last 2 weeks.
         Rate Limit: 1 request per second
         Rate limit rule: UserID
-        
+
 
         Args:
             transId: Transfer ID Either transId or clientId is required. If both are
@@ -203,15 +220,23 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def asset_bills_details(self, ccy: str = None, type_: str = None, clientId: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def asset_bills_details(
+        self,
+        ccy: str = None,
+        type_: str = None,
+        clientId: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Query the billing record. You can get the latest 1 month historical data.
         Rate Limit: 6 Requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Currency
@@ -306,15 +331,22 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def lightning_deposits(self, ccy: str, amt: str, to: str = None, invoice: str = None, cTime: str = None, use_proxy: bool = False) -> APIReturn:
+    def lightning_deposits(
+        self,
+        ccy: str,
+        amt: str,
+        to: str = None,
+        invoice: str = None,
+        cTime: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Users can create up to 10,000 different invoices within 24 hours.
         Rate Limit: 2 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Token symbol. Currently only BTC is supported.
@@ -338,15 +370,14 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_deposit_address(self, ccy: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Retrieve the deposit addresses of currencies, including previously-used addresses.
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Currency, e.g. BTC
@@ -365,15 +396,26 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_deposit_history(self, ccy: str = None, depId: str = None, fromWdId: str = None, txId: str = None, type_: str = None, state: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_deposit_history(
+        self,
+        ccy: str = None,
+        depId: str = None,
+        fromWdId: str = None,
+        txId: str = None,
+        type_: str = None,
+        state: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the deposit records according to the currency, deposit status, and time range in reverse chronological order. The 100 most recent records are returned by default.
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Currency, e.g. BTC
@@ -407,15 +449,25 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def withdrawal(self, ccy: str, amt: str, dest: str, toAddr: str, fee: str, chain: str = None, areaCode: str = None, clientId: str = None, use_proxy: bool = False) -> APIReturn:
+    def withdrawal(
+        self,
+        ccy: str,
+        amt: str,
+        dest: str,
+        toAddr: str,
+        fee: str,
+        chain: str = None,
+        areaCode: str = None,
+        clientId: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
-        Withdrawal of tokens. Common sub-account does not support withdrawal. 
+
+        Withdrawal of tokens. Common sub-account does not support withdrawal.
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Currency, e.g. USDT
@@ -450,15 +502,16 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def lightning_withdrawals(self, ccy: str, invoice: str, memo: str = None, use_proxy: bool = False) -> APIReturn:
+    def lightning_withdrawals(
+        self, ccy: str, invoice: str, memo: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         The maximum withdrawal amount is 0.1 BTC per request, and 1 BTC in 24 hours. The minimum withdrawal amount is approximately 0.000001 BTC. Sub-account does not support withdrawal.
         Rate Limit: 2 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Token symbol. Currently only BTC is supported.
@@ -479,15 +532,14 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def cancel_withdrawal(self, wdId: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         You can cancel normal withdrawal requests, but you cannot cancel withdrawal requests on Lightning.
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             wdId: Withdrawal ID
@@ -506,15 +558,26 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_withdrawal_history(self, ccy: str = None, wdId: str = None, clientId: str = None, txId: str = None, type_: str = None, state: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_withdrawal_history(
+        self,
+        ccy: str = None,
+        wdId: str = None,
+        clientId: str = None,
+        txId: str = None,
+        type_: str = None,
+        state: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the withdrawal records according to the currency, withdrawal status, and time range in reverse chronological order. The 100 most recent records are returned by default.
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Currency, e.g. BTC
@@ -546,15 +609,22 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_deposit_withdraw_status(self, wdId: str = None, txId: str = None, ccy: str = None, to: str = None, chain: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_deposit_withdraw_status(
+        self,
+        wdId: str = None,
+        txId: str = None,
+        ccy: str = None,
+        to: str = None,
+        chain: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve deposit's and withdrawal's detailed status and estimated complete time.
         Rate Limit: 1 request per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             wdId: Withdrawl ID, use to retrieve withdrawal status Required to input one
@@ -582,15 +652,16 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def small_assets_convert(self, ccy: List[str], use_proxy: bool = False) -> APIReturn:
+    def small_assets_convert(
+        self, ccy: List[str], use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Convert small assets in funding account to OKB. Only 5 convert is allowed within 24 hours.
         Rate Limit: 1 request per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Small assets needed to be convert, e.g. ["BTC","USDT"]
@@ -609,5 +680,3 @@ class Funding(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
-

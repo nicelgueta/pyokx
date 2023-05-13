@@ -1,16 +1,22 @@
 # auto-generated code #
 from .base import APIComponent, APIReturn, EndpointDetails
-from typing import *
 
 
 class PublicData(APIComponent):
-    def get_instruments(self, instType: str, uly: str = None, instFamily: str = None, instId: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_instruments(
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        instId: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve a list of instruments with open contracts.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP + instrumentType
-        
+
 
         Args:
             instType: Instrument type SPOT MARGIN SWAP FUTURES OPTION
@@ -34,15 +40,23 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_delivery_exercise_history(self, instType: str, uly: str = None, instFamily: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_delivery_exercise_history(
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve delivery records of Futures and exercise records of Options in the last 3 months.
         Rate Limit: 40 requests per 2 seconds
         Rate limit rule: IP + (instrumentType + uly)
-        
+
 
         Args:
             instType: Instrument type  FUTURES OPTION
@@ -68,15 +82,21 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_open_interest(self, instType: str, uly: str = None, instFamily: str = None, instId: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_open_interest(
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        instId: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the total open interest for contracts on OKX.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP +instrumentID
-        
+
 
         Args:
             instType: Instrument type SWAP FUTURES OPTION
@@ -100,15 +120,14 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_funding_rate(self, instId: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Retrieve funding rate.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP +instrumentID
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-SWAP only applicable to SWAP
@@ -127,15 +146,21 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_funding_rate_history(self, instId: str, before: str = None, after: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_funding_rate_history(
+        self,
+        instId: str,
+        before: str = None,
+        after: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve funding rate history. This endpoint can retrieve data from the last 3 months.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP +instrumentID
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-SWAP only applicable to SWAP
@@ -159,15 +184,14 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_limit_price(self, instId: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Retrieve the highest buy limit and lowest sell limit of the instrument.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USDT-SWAP only applicable to
@@ -187,15 +211,20 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_option_market_data(self, uly: str = None, instFamily: str = None, expTime: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_option_market_data(
+        self,
+        uly: str = None,
+        instFamily: str = None,
+        expTime: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve option market data.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP +uly
-        
+
 
         Args:
             uly: Underlying, only applicable to OPTION Either uly or instFamily is
@@ -218,15 +247,16 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_estimated_delivery_exercise_price(self, instId: str, use_proxy: bool = False) -> APIReturn:
+    def get_estimated_delivery_exercise_price(
+        self, instId: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Retrieve the estimated delivery price which will only have a return value one hour before the delivery/exercise.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: IP +instId
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-200214 only applicable to FUTURES/OPTION
@@ -245,15 +275,16 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_discount_rate_and_interest_free_quota(self, ccy: str = None, discountLv: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_discount_rate_and_interest_free_quota(
+        self, ccy: str = None, discountLv: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Retrieve discount rate level and interest-free quota.
         Rate Limit: 2 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: Currency
@@ -273,15 +304,14 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_system_time(self, ts: str = None, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Retrieve API server time.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             ts: System time, Unix timestamp format in milliseconds, e.g. 1597026383085
@@ -300,16 +330,22 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_mark_price(self, instType: str, uly: str = None, instFamily: str = None, instId: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_mark_price(
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        instId: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve mark price.
         We set the mark price based on the SPOT index and at a reasonable basis to prevent individual users from manipulating the market and causing the contract price to fluctuate.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: IP +instrumentID
-        
+
 
         Args:
             instType: Instrument type  MARGIN  SWAP FUTURES  OPTION
@@ -331,15 +367,24 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_position_tiers(self, instType: str, tdMode: str, uly: str = None, instFamily: str = None, instId: str = None, ccy: str = None, tier: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_position_tiers(
+        self,
+        instType: str,
+        tdMode: str,
+        uly: str = None,
+        instFamily: str = None,
+        instId: str = None,
+        ccy: str = None,
+        tier: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve position tiers information, maximum leverage depends on your borrowings and margin ratio.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instType: Instrument type MARGIN SWAP FUTURES OPTION
@@ -374,15 +419,26 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_interest_rate_and_loan_quota(self, basic: list = None, ccy: str = None, rate: str = None, quota: str = None, vip: list = None, level: str = None, loanQuotaCoef: str = None, irDiscount: str = None, regular: list = None, use_proxy: bool = False) -> APIReturn:
+    def get_interest_rate_and_loan_quota(
+        self,
+        basic: list = None,
+        ccy: str = None,
+        rate: str = None,
+        quota: str = None,
+        vip: list = None,
+        level: str = None,
+        loanQuotaCoef: str = None,
+        irDiscount: str = None,
+        regular: list = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve interest rate
         Rate Limit: 2 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             basic: Basic interest rate
@@ -412,14 +468,22 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_interest_rate_and_loan_quota_for_vip_loans(self, ccy: str = None, rate: str = None, quota: str = None, levelList: list = None, level: str = None, loanQuota: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_interest_rate_and_loan_quota_for_vip_loans(
+        self,
+        ccy: str = None,
+        rate: str = None,
+        quota: str = None,
+        levelList: list = None,
+        level: str = None,
+        loanQuota: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 2 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: Currency, e.g. BTC
@@ -443,14 +507,13 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_underlying(self, instType: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instType: Instrument type  SWAP FUTURES  OPTION
@@ -469,15 +532,25 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_insurance_fund(self, instType: str, type_: str = None, uly: str = None, instFamily: str = None, ccy: str = None, before: str = None, after: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_insurance_fund(
+        self,
+        instType: str,
+        type_: str = None,
+        uly: str = None,
+        instFamily: str = None,
+        ccy: str = None,
+        before: str = None,
+        after: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Get insurance fund balance information
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instType: Instrument type  MARGIN SWAP FUTURES  OPTION
@@ -506,15 +579,22 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def unit_convert(self, instId: str, sz: str, type_: str = None, px: str = None, unit: str = None, use_proxy: bool = False) -> APIReturn:
+    def unit_convert(
+        self,
+        instId: str,
+        sz: str,
+        type_: str = None,
+        px: str = None,
+        unit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Convert the crypto value to the number of contracts, or vice versa
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, only applicable to FUTURES/SWAP/OPTION
@@ -545,15 +625,20 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_option_trades(self, instId: str = None, instFamily: str = None, optType: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_option_trades(
+        self,
+        instId: str = None,
+        instFamily: str = None,
+        optType: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         The maximum is 100.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-221230-4000-C, Either instId or instFamily
@@ -575,15 +660,16 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_option_tickbands(self, instType: str, instFamily: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_option_tickbands(
+        self, instType: str, instFamily: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Get option tickBands information
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instType: Instrument type OPTION
@@ -603,5 +689,3 @@ class PublicData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
-

@@ -1,16 +1,21 @@
 # auto-generated code #
 from .base import APIComponent, APIReturn, EndpointDetails
-from typing import *
 
 
 class MarketData(APIComponent):
-    def get_tickers(self, instType: str, uly: str = None, instFamily: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_tickers(
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the latest price snapshot, best bid/ask price, and trading volume in the last 24 hours.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instType: Instrument type  SPOT SWAP  FUTURES OPTION
@@ -31,15 +36,14 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_ticker(self, instId: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Retrieve the latest price snapshot, best bid/ask price, and trading volume in the last 24 hours.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-SWAP
@@ -58,15 +62,16 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_index_tickers(self, quoteCcy: str = None, instId: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_index_tickers(
+        self, quoteCcy: str = None, instId: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Retrieve index tickers.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             quoteCcy: Quote currency Currently there is only an index with USD/USDT/BTC as
@@ -87,15 +92,16 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_order_book(self, instId: str, sz: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_order_book(
+        self, instId: str, sz: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Retrieve order book of the instrument.
         Rate Limit: 40 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USDT
@@ -116,15 +122,14 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_order_lite_book(self, instId: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Retrieve order top 25 book of the instrument more quickly
         Rate Limit: 6 requests per 1 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USDT
@@ -143,15 +148,22 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_candlesticks(self, instId: str, bar: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_candlesticks(
+        self,
+        instId: str,
+        bar: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
-        Retrieve the candlestick charts. This endpoint can retrieve the latest 1,440 data entries. Charts are returned in groups based on the requested bar. 
+
+        Retrieve the candlestick charts. This endpoint can retrieve the latest 1,440 data entries. Charts are returned in groups based on the requested bar.
         Rate Limit: 40 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-190927-5000-C
@@ -176,15 +188,22 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_candlesticks_history(self, instId: str, after: str = None, before: str = None, bar: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_candlesticks_history(
+        self,
+        instId: str,
+        after: str = None,
+        before: str = None,
+        bar: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve history candlestick charts from recent years.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-200927
@@ -209,15 +228,22 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_index_candlesticks(self, instId: str, after: str = None, before: str = None, bar: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_index_candlesticks(
+        self,
+        instId: str,
+        after: str = None,
+        before: str = None,
+        bar: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
-        Retrieve the candlestick charts of the index. This endpoint can retrieve the latest 1,440 data entries. Charts are returned in groups based on the requested bar. 
+
+        Retrieve the candlestick charts of the index. This endpoint can retrieve the latest 1,440 data entries. Charts are returned in groups based on the requested bar.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Index, e.g. BTC-USD
@@ -242,15 +268,22 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_index_candlesticks_history(self, instId: str, after: str = None, before: str = None, bar: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_index_candlesticks_history(
+        self,
+        instId: str,
+        after: str = None,
+        before: str = None,
+        bar: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the candlestick charts of the index from recent years.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Index, e.g. BTC-USD
@@ -275,15 +308,22 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_mark_price_candlesticks(self, instId: str, after: str = None, before: str = None, bar: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_mark_price_candlesticks(
+        self,
+        instId: str,
+        after: str = None,
+        before: str = None,
+        bar: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the candlestick charts of mark price. This endpoint can retrieve the latest 1,440 data entries. Charts are returned in groups based on the requested bar.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-SWAP
@@ -308,15 +348,22 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_mark_price_candlesticks_history(self, instId: str, after: str = None, before: str = None, bar: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_mark_price_candlesticks_history(
+        self,
+        instId: str,
+        after: str = None,
+        before: str = None,
+        bar: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the candlestick charts of mark price from recent years.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-SWAP
@@ -341,15 +388,16 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_trades(self, instId: str, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_trades(
+        self, instId: str, limit: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Retrieve the recent transactions of an instrument.
         Rate Limit: 100 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USDT
@@ -369,15 +417,22 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_trades_history(self, instId: str, type_: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_trades_history(
+        self,
+        instId: str,
+        type_: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the recent transactions of an instrument from the last 3 months with pagination.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USDT
@@ -402,15 +457,14 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_option_trades(self, instFamily: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Retrieve the recent transactions of an instrument under same instFamily. The maximum is 100.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instFamily: Instrument family, e.g. BTC-USD Applicable to OPTION
@@ -429,15 +483,20 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_24h_total_volume(self, volUsd: str = None, volCny: str = None, ts: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_24h_total_volume(
+        self,
+        volUsd: str = None,
+        volCny: str = None,
+        ts: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         The 24-hour trading volume is calculated on a rolling basis.
         Rate Limit: 2 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             volUsd: 24-hour total trading volume from the order book trading in "USD"
@@ -459,15 +518,21 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_oracle(self, messages: str = None, prices: str = None, signatures: str = None, timestamp: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_oracle(
+        self,
+        messages: str = None,
+        prices: str = None,
+        signatures: str = None,
+        timestamp: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Get the crypto price of signing using Open Oracle smart contract.
         Rate Limit: 1 request per 5 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             messages: ABI-encoded values [kind, timestamp, key, value], where kind equals
@@ -491,15 +556,16 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_exchange_rate(self, usdCny: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_exchange_rate(
+        self, usdCny: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         This interface provides the average exchange rate data for 2 weeks
         Rate Limit: 1 request per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             usdCny: Exchange rate
@@ -518,15 +584,14 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_index_components(self, index: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Get the index component information data on the market
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             index: index, e.g BTC-USDT
@@ -545,15 +610,20 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_block_tickers(self, instType: str, uly: str = None, instFamily: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_block_tickers(
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the latest block trading volume in the last 24 hours.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instType: Instrument type  SPOT SWAP  FUTURES OPTION
@@ -574,15 +644,14 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_block_ticker(self, instId: str, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Retrieve the latest block trading volume in the last 24 hours.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-SWAP
@@ -601,15 +670,14 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_block_trades(self, instId: str, use_proxy: bool = False) -> APIReturn:
         """
-    
-        Retrieve the recent block trading transactions of an instrument. Descending order by tradeId. 
+
+        Retrieve the recent block trading transactions of an instrument. Descending order by tradeId.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USDT
@@ -628,5 +696,3 @@ class MarketData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
-

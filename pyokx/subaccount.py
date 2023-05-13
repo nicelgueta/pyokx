@@ -4,13 +4,21 @@ from typing import *
 
 
 class Subaccount(APIComponent):
-    def view_sub_account_list(self, enable: str = None, subAcct: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def view_sub_account_list(
+        self,
+        enable: str = None,
+        subAcct: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Applies to master accounts only
         Rate limit：2 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             enable: Sub-account status, true: Normal ; false: Frozen
@@ -35,15 +43,22 @@ class Subaccount(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def reset_the_api_key_of_a_sub_account(self, subAcct: str, apiKey: str, label: str = None, perm: str = None, ip: str = None, use_proxy: bool = False) -> APIReturn:
+    def reset_the_api_key_of_a_sub_account(
+        self,
+        subAcct: str,
+        apiKey: str,
+        label: str = None,
+        perm: str = None,
+        ip: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Applies to master accounts only and master accounts API Key must be linked to IP addresses.
         Rate limit：1 request per second
         Rate limit rule: UserID
-        
+
 
         Args:
             subAcct: Sub-account name
@@ -72,15 +87,16 @@ class Subaccount(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_sub_account_trading_balance(self, subAcct: str, use_proxy: bool = False) -> APIReturn:
+    def get_sub_account_trading_balance(
+        self, subAcct: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Query detailed balance info of Trading Account of a sub-account via the master account (applies to master accounts only)
         Rate limit：6 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             subAcct: Sub-account name
@@ -99,15 +115,16 @@ class Subaccount(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_sub_account_funding_balance(self, subAcct: str, ccy: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_sub_account_funding_balance(
+        self, subAcct: str, ccy: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Query detailed balance info of Funding Account of a sub-account via the master account (applies to master accounts only)
         Rate limit：6 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             subAcct: Sub-account name
@@ -128,16 +145,24 @@ class Subaccount(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def history_of_sub_account_transfer(self, ccy: str = None, type_: str = None, subAcct: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def history_of_sub_account_transfer(
+        self,
+        ccy: str = None,
+        type_: str = None,
+        subAcct: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Applies to master accounts only.
         Retrieve the transfer data for the last 3 months.
         Rate limit：6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Currency, such as BTC
@@ -164,16 +189,26 @@ class Subaccount(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def master_accounts_manage_the_transfers_between_sub_accounts(self, ccy: str, amt: str, from_: str, to: str, fromSubAccount: str, toSubAccount: str, loanTrans: bool = None, omitPosRisk: str = None, use_proxy: bool = False) -> APIReturn:
+    def master_accounts_manage_the_transfers_between_sub_accounts(
+        self,
+        ccy: str,
+        amt: str,
+        from_: str,
+        to: str,
+        fromSubAccount: str,
+        toSubAccount: str,
+        loanTrans: bool = None,
+        omitPosRisk: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
-        Applies to master accounts only. 
+
+        Applies to master accounts only.
         Only API keys with Trade privilege can call this endpoint.
         Rate limit：1 request per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Currency
@@ -200,15 +235,16 @@ class Subaccount(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def set_permission_of_transfer_out(self, subAcct: str, canTransOut: bool = None, use_proxy: bool = False) -> APIReturn:
+    def set_permission_of_transfer_out(
+        self, subAcct: str, canTransOut: bool = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Set permission of transfer out for sub-account (only applicable to master account). Sub-account can transfer out to master account by default.
         Rate Limit: 1 request per second
         Rate limit rule: UserID
-        
+
 
         Args:
             subAcct: Name of the sub-account. Single sub-account or multiple sub-account
@@ -230,15 +266,16 @@ class Subaccount(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_custody_trading_sub_account_list(self, subAcct: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_custody_trading_sub_account_list(
+        self, subAcct: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         The trading team uses this interface to view the list of sub-accounts currently under escrow
         Rate limit：1 request per second
         Rate limit rule: UserID
-        
+
 
         Args:
             subAcct: Sub-account name
@@ -257,15 +294,16 @@ class Subaccount(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_the_user_39_s_affiliate_rebate_information(self, apiKey: str, use_proxy: bool = False) -> APIReturn:
+    def get_the_user_39_s_affiliate_rebate_information(
+        self, apiKey: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         This endpoint is used to get the user's affiliate rebate information for affiliate.
         Rate limit：20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             apiKey: The user's API key
@@ -284,15 +322,21 @@ class Subaccount(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def set_sub_accounts_vip_loan(self, enable: bool, subAcct: str, loanAlloc: str, alloc: List[dict] = None, use_proxy: bool = False) -> APIReturn:
+    def set_sub_accounts_vip_loan(
+        self,
+        enable: bool,
+        subAcct: str,
+        loanAlloc: str,
+        alloc: List[dict] = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Set the VIP loan allocation of sub-accounts. Only Applicable to master account API keys with Trade access.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             enable: true or false
@@ -316,15 +360,16 @@ class Subaccount(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_sub_account_borrow_interest_and_limit(self, subAcct: str = None, ccy: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_sub_account_borrow_interest_and_limit(
+        self, subAcct: str = None, ccy: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Only applicable to master account API keys. Only return VIP loan information
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             subAcct: Name of the sub-account. Can only put 1 sub account.
@@ -344,5 +389,3 @@ class Subaccount(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
-

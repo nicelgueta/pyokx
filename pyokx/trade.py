@@ -4,16 +4,39 @@ from typing import *
 
 
 class Trade(APIComponent):
-    def place_order(self, instId: str, tdMode: str, side: str, ordType: str, sz: str, ccy: str = None, clOrdId: str = None, tag: str = None, posSide: str = None, px: str = None, reduceOnly: bool = None, tgtCcy: str = None, banAmend: bool = None, tpTriggerPx: str = None, tpOrdPx: str = None, slTriggerPx: str = None, slOrdPx: str = None, tpTriggerPxType: str = None, slTriggerPxType: str = None, quickMgnType: str = None, use_proxy: bool = False) -> APIReturn:
+    def place_order(
+        self,
+        instId: str,
+        tdMode: str,
+        side: str,
+        ordType: str,
+        sz: str,
+        ccy: str = None,
+        clOrdId: str = None,
+        tag: str = None,
+        posSide: str = None,
+        px: str = None,
+        reduceOnly: bool = None,
+        tgtCcy: str = None,
+        banAmend: bool = None,
+        tpTriggerPx: str = None,
+        tpOrdPx: str = None,
+        slTriggerPx: str = None,
+        slOrdPx: str = None,
+        tpTriggerPxType: str = None,
+        slTriggerPxType: str = None,
+        quickMgnType: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         You can place an order only if you have sufficient funds.
         For leading contracts, this endpoint supports placement, but can't close positions.
         Rate Limit: 60 requests per 2 seconds
         Rate Limit of leading contracts for Copy Trading: 1 requests per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-190927-5000-C
@@ -78,21 +101,22 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def place_multiple_orders(self, body: List[dict] = None, use_proxy: bool = False) -> APIReturn:
+    def place_multiple_orders(
+        self, body: List[dict] = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Place orders in batches. Maximum 20 orders can be placed per request. Request parameters should be passed in the form of an array.
         For leading contracts, this endpoint supports placement, but can't close positions.
         Rate Limit: 300 orders per 2 seconds
         Rate Limit of leading contracts for Copy Trading: 1 requests per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
-        
+
         Unlike other endpoints, the rate limit of this endpoint is determined by the number of orders. If there is only one order in the request, it will consume the rate limit of `Place order`.
-        
-        
+
+
 
         Request format:
             This function body should be formatted as an array. Eg.
@@ -191,16 +215,21 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def cancel_order(self, instId: str, ordId: str = None, clOrdId: str = None, use_proxy: bool = False) -> APIReturn:
+    def cancel_order(
+        self,
+        instId: str,
+        ordId: str = None,
+        clOrdId: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Cancel an incomplete order.
         Rate Limit: 60 requests per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-190927
@@ -222,19 +251,20 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def cancel_multiple_orders(self, body: List[dict] = None, use_proxy: bool = False) -> APIReturn:
+    def cancel_multiple_orders(
+        self, body: List[dict] = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Cancel incomplete orders in batches. Maximum 20 orders can be canceled per request. Request parameters should be passed in the form of an array.
         Rate Limit: 300 orders per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
-        
+
         Unlike other endpoints, the rate limit of this endpoint is determined by the number of orders. If there is only one order in the request, it will consume the rate limit of `Cancel order`.
-        
-        
+
+
 
         Request format:
             This function body should be formatted as an array. Eg.
@@ -273,17 +303,32 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def amend_order(self, instId: str, cxlOnFail: bool = None, ordId: str = None, clOrdId: str = None, reqId: str = None, newSz: str = None, newPx: str = None, newTpTriggerPx: str = None, newTpOrdPx: str = None, newSlTriggerPx: str = None, newSlOrdPx: str = None, newTpTriggerPxType: str = None, newSlTriggerPxType: str = None, use_proxy: bool = False) -> APIReturn:
+    def amend_order(
+        self,
+        instId: str,
+        cxlOnFail: bool = None,
+        ordId: str = None,
+        clOrdId: str = None,
+        reqId: str = None,
+        newSz: str = None,
+        newPx: str = None,
+        newTpTriggerPx: str = None,
+        newTpOrdPx: str = None,
+        newSlTriggerPx: str = None,
+        newSlOrdPx: str = None,
+        newTpTriggerPxType: str = None,
+        newSlTriggerPxType: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Amend an incomplete order.
         Rate Limit: 60 requests per 2 seconds
         Rate Limit of leading contracts for Copy Trading: 1 requests per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
-        
+
 
         Args:
             instId: Instrument ID
@@ -327,20 +372,21 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def amend_multiple_orders(self, body: List[dict] = None, use_proxy: bool = False) -> APIReturn:
+    def amend_multiple_orders(
+        self, body: List[dict] = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Amend incomplete orders in batches. Maximum 20 orders can be amended per request. Request parameters should be passed in the form of an array.
         Rate Limit: 300 orders per 2 seconds
         Rate Limit of leading contracts for Copy Trading: 1 requests per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
-        
+
         Unlike other endpoints, the rate limit of this endpoint is determined by the number of orders. If there is only one order in the request, it will consume the rate limit of `Amend order`.
-        
-        
+
+
 
         Request format:
             This function body should be formatted as an array. Eg.
@@ -411,16 +457,25 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def close_positions(self, instId: str, mgnMode: str, posSide: str = None, ccy: str = None, autoCxl: bool = None, clOrdId: str = None, tag: str = None, use_proxy: bool = False) -> APIReturn:
+    def close_positions(
+        self,
+        instId: str,
+        mgnMode: str,
+        posSide: str = None,
+        ccy: str = None,
+        autoCxl: bool = None,
+        clOrdId: str = None,
+        tag: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Close the position of an instrument via a market order.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
-        
+
 
         Args:
             instId: Instrument ID
@@ -453,16 +508,21 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_order_details(self, instId: str, ordId: str = None, clOrdId: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_order_details(
+        self,
+        instId: str,
+        ordId: str = None,
+        clOrdId: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve order details.
         Rate Limit: 60 requests per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-190927
@@ -485,15 +545,26 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_order_list(self, instType: str = None, uly: str = None, instFamily: str = None, instId: str = None, ordType: str = None, state: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_order_list(
+        self,
+        instType: str = None,
+        uly: str = None,
+        instFamily: str = None,
+        instId: str = None,
+        ordType: str = None,
+        state: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve all incomplete orders under the current account.
         Rate Limit: 60 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type SPOT MARGIN SWAP FUTURES OPTION
@@ -522,16 +593,30 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_order_history_last_7_days(self, instType: str, uly: str = None, instFamily: str = None, instId: str = None, ordType: str = None, state: str = None, category: str = None, after: str = None, before: str = None, begin: str = None, end: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_order_history_last_7_days(
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        instId: str = None,
+        ordType: str = None,
+        state: str = None,
+        category: str = None,
+        after: str = None,
+        before: str = None,
+        begin: str = None,
+        end: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
-        Retrieve the completed order data for the last 7 days, including those placed 7 days ago but completed for the last 7 days. 
+
+        Retrieve the completed order data for the last 7 days, including those placed 7 days ago but completed for the last 7 days.
         The incomplete orders that have been canceled are only reserved for 2 hours.
         Rate Limit: 40 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type SPOT MARGIN SWAP FUTURES OPTION
@@ -565,15 +650,29 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_order_history_last_3_months(self, instType: str, uly: str = None, instFamily: str = None, instId: str = None, ordType: str = None, state: str = None, category: str = None, after: str = None, before: str = None, begin: str = None, end: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_order_history_last_3_months(
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        instId: str = None,
+        ordType: str = None,
+        state: str = None,
+        category: str = None,
+        after: str = None,
+        before: str = None,
+        begin: str = None,
+        end: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the completed order data for the last 3 months, including those placed 3 months ago but completed for the last 3 months.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type SPOT MARGIN SWAP FUTURES OPTION
@@ -607,15 +706,27 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_transaction_details_last_3_days(self, instType: str = None, uly: str = None, instFamily: str = None, instId: str = None, ordId: str = None, after: str = None, before: str = None, begin: str = None, end: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_transaction_details_last_3_days(
+        self,
+        instType: str = None,
+        uly: str = None,
+        instFamily: str = None,
+        instId: str = None,
+        ordId: str = None,
+        after: str = None,
+        before: str = None,
+        begin: str = None,
+        end: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve recently-filled transaction details in the last 3 day.
         Rate Limit: 60 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type SPOT MARGIN SWAP FUTURES OPTION
@@ -645,15 +756,27 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_transaction_details_last_3_months(self, instType: str, uly: str = None, instFamily: str = None, instId: str = None, ordId: str = None, after: str = None, before: str = None, begin: str = None, end: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_transaction_details_last_3_months(
+        self,
+        instType: str,
+        uly: str = None,
+        instFamily: str = None,
+        instId: str = None,
+        ordId: str = None,
+        after: str = None,
+        before: str = None,
+        begin: str = None,
+        end: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve recently-filled transaction details in the last 3 months.
         Rate Limit: 10 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             instType: Instrument type SPOT MARGIN SWAP FUTURES OPTION
@@ -683,17 +806,49 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def place_algo_order(self, instId: str, tdMode: str, side: str, ordType: str, ccy: str = None, posSide: str = None, sz: str = None, tag: str = None, reduceOnly: bool = None, tgtCcy: str = None, algoClOrdId: str = None, closeFraction: str = None, quickMgnType: str = None, tpTriggerPx: str = None, tpTriggerPxType: str = None, tpOrdPx: str = None, slTriggerPx: str = None, slTriggerPxType: str = None, slOrdPx: str = None, triggerPx: str = None, orderPx: str = None, triggerPxType: str = None, callbackRatio: str = None, callbackSpread: str = None, activePx: str = None, pxVar: str = None, pxSpread: str = None, szLimit: str = None, pxLimit: str = None, timeInterval: str = None, use_proxy: bool = False) -> APIReturn:
+    def place_algo_order(
+        self,
+        instId: str,
+        tdMode: str,
+        side: str,
+        ordType: str,
+        ccy: str = None,
+        posSide: str = None,
+        sz: str = None,
+        tag: str = None,
+        reduceOnly: bool = None,
+        tgtCcy: str = None,
+        algoClOrdId: str = None,
+        closeFraction: str = None,
+        quickMgnType: str = None,
+        tpTriggerPx: str = None,
+        tpTriggerPxType: str = None,
+        tpOrdPx: str = None,
+        slTriggerPx: str = None,
+        slTriggerPxType: str = None,
+        slOrdPx: str = None,
+        triggerPx: str = None,
+        orderPx: str = None,
+        triggerPxType: str = None,
+        callbackRatio: str = None,
+        callbackSpread: str = None,
+        activePx: str = None,
+        pxVar: str = None,
+        pxSpread: str = None,
+        szLimit: str = None,
+        pxLimit: str = None,
+        timeInterval: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         The algo order includes trigger order, oco order, conditional order,iceberg order, twap order and trailing order.
         Rate Limit: 20 requests per 2 seconds
         Rate Limit of leading contracts for Copy Trading: 1 requests per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USD-190927-5000-C
@@ -774,16 +929,17 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def cancel_algo_order(self, body: List[dict] = None, use_proxy: bool = False) -> APIReturn:
+    def cancel_algo_order(
+        self, body: List[dict] = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Cancel unfilled algo orders (not including Iceberg order, TWAP order, Trailing Stop order). A maximum of 10 orders can be canceled per request. Request parameters should be passed in the form of an array.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
-        
+
 
         Request format:
             This function body should be formatted as an array. Eg.
@@ -819,16 +975,30 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def amend_algo_order(self, instId: str, algoId: str, algoClOrdId: str, cxlOnFail: bool = None, reqId: str = None, newSz: str = None, newTpTriggerPx: str = None, newTpOrdPx: str = None, newSlTriggerPx: str = None, newSlOrdPx: str = None, newTpTriggerPxType: str = None, newSlTriggerPxType: str = None, use_proxy: bool = False) -> APIReturn:
+    def amend_algo_order(
+        self,
+        instId: str,
+        algoId: str,
+        algoClOrdId: str,
+        cxlOnFail: bool = None,
+        reqId: str = None,
+        newSz: str = None,
+        newTpTriggerPx: str = None,
+        newTpOrdPx: str = None,
+        newSlTriggerPx: str = None,
+        newSlOrdPx: str = None,
+        newTpTriggerPxType: str = None,
+        newSlTriggerPxType: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Amend unfilled algo orders (Support stop order only,not including Move_order_stop order, Trigger order, Iceberg order, TWAP order, Trailing Stop order).
         Only applicable to Futures and Perpetual swap.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID + Instrument ID
-        
+
 
         Args:
             instId: Instrument ID
@@ -869,16 +1039,17 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def cancel_advance_algo_order(self, body: List[dict] = None, use_proxy: bool = False) -> APIReturn:
+    def cancel_advance_algo_order(
+        self, body: List[dict] = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Cancel unfilled algo orders (including Iceberg order, TWAP order, Trailing Stop order). A maximum of 10 orders can be canceled per request. Request parameters should be passed in the form of an array.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule (except Options): UserID + Instrument ID
         Rate limit rule (Options only): UserID + Instrument Family
-        
+
 
         Request format:
             This function body should be formatted as an array. Eg.
@@ -914,14 +1085,15 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_algo_order_details(self, algoId: str = None, algoClOrdId: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_algo_order_details(
+        self, algoId: str = None, algoClOrdId: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoId: Algo ID Either algoId or algoClOrdId is required.If both are passed,
@@ -943,15 +1115,25 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_algo_order_list(self, ordType: str, algoId: str = None, algoClOrdId: str = None, instType: str = None, instId: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_algo_order_list(
+        self,
+        ordType: str,
+        algoId: str = None,
+        algoClOrdId: str = None,
+        instType: str = None,
+        instId: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve a list of untriggered Algo orders under the current account.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             ordType: Order type conditional: One-way stop order oco: One-cancels-the-other
@@ -981,15 +1163,25 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_algo_order_history(self, ordType: str, state: str = None, algoId: str = None, instType: str = None, instId: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_algo_order_history(
+        self,
+        ordType: str,
+        state: str = None,
+        algoId: str = None,
+        instType: str = None,
+        instId: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve a list of all algo orders under the current account in the last 3 months.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             ordType: Order type conditional: One-way stop order oco: One-cancels-the-other
@@ -1018,11 +1210,10 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
     def get_easy_convert_currency_list(self, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Get list of small convertibles and mainstream currencies. Only applicable to the crypto balance less than $10.
         Rate Limit: 1 request per 2 seconds
         Rate limit rule: UserID
@@ -1041,15 +1232,16 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def place_easy_convert(self, fromCcy: list, toCcy: str, use_proxy: bool = False) -> APIReturn:
+    def place_easy_convert(
+        self, fromCcy: list, toCcy: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Convert small currencies to mainstream currencies. Only applicable to the crypto balance less than $10.
         Rate Limit: 1 request per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             fromCcy: Type of small payment currency convert from Maximum 5 currencies can
@@ -1073,15 +1265,20 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_easy_convert_history(self, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_easy_convert_history(
+        self,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Get the history and status of easy convert trades.
         Rate Limit: 1 request per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             after: Pagination of data to return records earlier than the requested time,
@@ -1104,15 +1301,16 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_one_click_repay_currency_list(self, debtType: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_one_click_repay_currency_list(
+        self, debtType: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Get list of debt currency data and repay currencies. Debt currencies include both cross and isolated debts.
         Rate Limit: 1 request per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             debtType: Debt type cross: cross isolated: isolated
@@ -1131,16 +1329,17 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def trade_one_click_repay(self, debtCcy: list, repayCcy: str, use_proxy: bool = False) -> APIReturn:
+    def trade_one_click_repay(
+        self, debtCcy: list, repayCcy: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Trade one-click repay to repay cross debts. Isolated debts are not applicable.
         The maximum repayment amount is based on the remaining available balance of funding and trading accounts.
         Rate Limit: 1 request per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             debtCcy: Debt currency type Maximum 5 currencies can be selected in one order.
@@ -1162,15 +1361,20 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_one_click_repay_history(self, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_one_click_repay_history(
+        self,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Get the history and status of one-click repay trades.
         Rate Limit: 1 request per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             after: Pagination of data to return records earlier than the requested time,
@@ -1193,5 +1397,3 @@ class Trade(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
-

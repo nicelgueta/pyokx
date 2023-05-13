@@ -1,12 +1,11 @@
 # auto-generated code #
 from .base import APIComponent, APIReturn, EndpointDetails
-from typing import *
 
 
 class Convert(APIComponent):
     def get_convert_currencies(self, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
                 _____________
@@ -24,14 +23,15 @@ class Convert(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_convert_currency_pair(self, fromCcy: str, toCcy: str, use_proxy: bool = False) -> APIReturn:
+    def get_convert_currency_pair(
+        self, fromCcy: str, toCcy: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             fromCcy: Currency to convert from, e.g. USDT
@@ -51,14 +51,23 @@ class Convert(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def estimate_quote(self, baseCcy: str, quoteCcy: str, side: str, rfqSz: str, rfqSzCcy: str, clQReqId: str = None, tag: str = None, use_proxy: bool = False) -> APIReturn:
+    def estimate_quote(
+        self,
+        baseCcy: str,
+        quoteCcy: str,
+        side: str,
+        rfqSz: str,
+        rfqSzCcy: str,
+        clQReqId: str = None,
+        tag: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 10 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             baseCcy: Base currency, e.g. BTC in BTC-USDT
@@ -85,14 +94,24 @@ class Convert(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def convert_trade(self, quoteId: str, baseCcy: str, quoteCcy: str, side: str, sz: str, szCcy: str, clTReqId: str = None, tag: str = None, use_proxy: bool = False) -> APIReturn:
+    def convert_trade(
+        self,
+        quoteId: str,
+        baseCcy: str,
+        quoteCcy: str,
+        side: str,
+        sz: str,
+        szCcy: str,
+        clTReqId: str = None,
+        tag: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 10 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             quoteId: Quote ID
@@ -120,14 +139,20 @@ class Convert(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_convert_history(self, after: str = None, before: str = None, limit: str = None, tag: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_convert_history(
+        self,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        tag: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             after: Pagination of data to return records earlier than the requested ts,
@@ -151,5 +176,3 @@ class Convert(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
-

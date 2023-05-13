@@ -4,12 +4,28 @@ from typing import *
 
 
 class RecurringBuy(APIComponent):
-    def place_recurring_buy_order(self, stgyName: str, recurringList: List[dict], ccy: str, ratio: str, period: str, recurringDay: str, recurringTime: str, timeZone: str, amt: str, investmentCcy: str, tdMode: str, algoClOrdId: str = None, tag: str = None, use_proxy: bool = False) -> APIReturn:
+    def place_recurring_buy_order(
+        self,
+        stgyName: str,
+        recurringList: List[dict],
+        ccy: str,
+        ratio: str,
+        period: str,
+        recurringDay: str,
+        recurringTime: str,
+        timeZone: str,
+        amt: str,
+        investmentCcy: str,
+        tdMode: str,
+        algoClOrdId: str = None,
+        tag: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             stgyName: Custom name for trading bot, no more than 40 characters
@@ -47,14 +63,15 @@ class RecurringBuy(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def amend_recurring_buy_order(self, algoId: str, stgyName: str, use_proxy: bool = False) -> APIReturn:
+    def amend_recurring_buy_order(
+        self, algoId: str, stgyName: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoId: Algo ID
@@ -75,15 +92,16 @@ class RecurringBuy(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def stop_recurring_buy_order(self, body: List[dict] = None, use_proxy: bool = False) -> APIReturn:
+    def stop_recurring_buy_order(
+        self, body: List[dict] = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         A maximum of 10 orders can be stopped per request.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Request format:
             This function body should be formatted as an array. Eg.
@@ -117,14 +135,20 @@ class RecurringBuy(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_recurring_buy_order_list(self, algoId: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_recurring_buy_order_list(
+        self,
+        algoId: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoId: Algo ID
@@ -147,14 +171,20 @@ class RecurringBuy(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_recurring_buy_order_history(self, algoId: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_recurring_buy_order_history(
+        self,
+        algoId: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoId: Algo ID
@@ -177,14 +207,15 @@ class RecurringBuy(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_recurring_buy_order_details(self, algoId: str, use_proxy: bool = False) -> APIReturn:
+    def get_recurring_buy_order_details(
+        self, algoId: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoId: Algo ID
@@ -203,14 +234,21 @@ class RecurringBuy(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_recurring_buy_sub_orders(self, algoId: str, ordId: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_recurring_buy_sub_orders(
+        self,
+        algoId: str,
+        ordId: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoId: Algo ID
@@ -234,5 +272,3 @@ class RecurringBuy(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
-

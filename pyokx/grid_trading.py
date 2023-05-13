@@ -4,12 +4,41 @@ from typing import *
 
 
 class GridTrading(APIComponent):
-    def place_grid_algo_order(self, instId: str, algoOrdType: str, maxPx: str, minPx: str, gridNum: str, triggerAction: str, triggerStrategy: str, runType: str = None, tpTriggerPx: str = None, slTriggerPx: str = None, tag: str = None, algoClOrdId: str = None, triggerParams: List[dict] = None, delaySeconds: str = None, timeframe: str = None, thold: str = None, triggerCond: str = None, timePeriod: str = None, triggerPx: str = None, stopType: str = None, quoteSz: str = None, baseSz: str = None, sz: str = None, direction: str = None, lever: str = None, basePos: bool = None, use_proxy: bool = False) -> APIReturn:
+    def place_grid_algo_order(
+        self,
+        instId: str,
+        algoOrdType: str,
+        maxPx: str,
+        minPx: str,
+        gridNum: str,
+        triggerAction: str,
+        triggerStrategy: str,
+        runType: str = None,
+        tpTriggerPx: str = None,
+        slTriggerPx: str = None,
+        tag: str = None,
+        algoClOrdId: str = None,
+        triggerParams: List[dict] = None,
+        delaySeconds: str = None,
+        timeframe: str = None,
+        thold: str = None,
+        triggerCond: str = None,
+        timePeriod: str = None,
+        triggerPx: str = None,
+        stopType: str = None,
+        quoteSz: str = None,
+        baseSz: str = None,
+        sz: str = None,
+        direction: str = None,
+        lever: str = None,
+        basePos: bool = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID + Instrument ID
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USDT-SWAP
@@ -63,15 +92,26 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def amend_grid_algo_order(self, algoId: str, instId: str, triggerAction: str, triggerStrategy: str, slTriggerPx: str = None, tpTriggerPx: str = None, triggerParams: List[dict] = None, triggerPx: str = None, stopType: str = None, use_proxy: bool = False) -> APIReturn:
+    def amend_grid_algo_order(
+        self,
+        algoId: str,
+        instId: str,
+        triggerAction: str,
+        triggerStrategy: str,
+        slTriggerPx: str = None,
+        tpTriggerPx: str = None,
+        triggerParams: List[dict] = None,
+        triggerPx: str = None,
+        stopType: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Supported contract grid algo order amendment.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoId: Algo ID
@@ -103,15 +143,16 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def stop_grid_algo_order(self, body: List[dict] = None, use_proxy: bool = False) -> APIReturn:
+    def stop_grid_algo_order(
+        self, body: List[dict] = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         A maximum of 10 orders can be stopped per request.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Request format:
             This function body should be formatted as an array. Eg.
@@ -153,15 +194,21 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def close_position_for_contract_grid(self, algoId: str, mktClose: bool, sz: str = None, px: str = None, use_proxy: bool = False) -> APIReturn:
+    def close_position_for_contract_grid(
+        self,
+        algoId: str,
+        mktClose: bool,
+        sz: str = None,
+        px: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Close position when the contract grid stop type is 'keep position'.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoId: Algo ID
@@ -184,14 +231,15 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def cancel_close_position_order_for_contract_grid(self, algoId: str, ordId: str, use_proxy: bool = False) -> APIReturn:
+    def cancel_close_position_order_for_contract_grid(
+        self, algoId: str, ordId: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoId: Algo ID
@@ -211,14 +259,15 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def instant_trigger_grid_algo_order(self, algoId: str, use_proxy: bool = False) -> APIReturn:
+    def instant_trigger_grid_algo_order(
+        self, algoId: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID + Instrument ID
-        
+
 
         Args:
             algoId: Algo ID
@@ -237,14 +286,23 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_grid_algo_order_list(self, algoOrdType: str, algoId: str = None, instId: str = None, instType: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_grid_algo_order_list(
+        self,
+        algoOrdType: str,
+        algoId: str = None,
+        instId: str = None,
+        instType: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoOrdType: Algo order type grid: Spot grid contract_grid: Contract grid
@@ -271,14 +329,23 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_grid_algo_order_history(self, algoOrdType: str, algoId: str = None, instId: str = None, instType: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_grid_algo_order_history(
+        self,
+        algoOrdType: str,
+        algoId: str = None,
+        instId: str = None,
+        instType: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoOrdType: Algo order type grid: Spot grid contract_grid: Contract grid
@@ -305,14 +372,15 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_grid_algo_order_details(self, algoOrdType: str, algoId: str, use_proxy: bool = False) -> APIReturn:
+    def get_grid_algo_order_details(
+        self, algoOrdType: str, algoId: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoOrdType: Algo order type grid: Spot grid contract_grid: Contract grid
@@ -333,14 +401,23 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_grid_algo_sub_orders(self, algoOrdType: str, algoId: str, type_: str, groupId: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_grid_algo_sub_orders(
+        self,
+        algoOrdType: str,
+        algoId: str,
+        type_: str,
+        groupId: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoOrdType: Algo order type grid: Spot grid contract_grid: Contract grid
@@ -367,14 +444,15 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_grid_algo_order_positions(self, algoOrdType: str, algoId: str, use_proxy: bool = False) -> APIReturn:
+    def get_grid_algo_order_positions(
+        self, algoOrdType: str, algoId: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoOrdType: Algo order type contract_grid: contract grid
@@ -394,14 +472,15 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def spot_moon_grid_withdraw_income(self, algoId: str, use_proxy: bool = False) -> APIReturn:
+    def spot_moon_grid_withdraw_income(
+        self, algoId: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoId: Algo ID
@@ -420,14 +499,15 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def compute_margin_balance(self, algoId: str, type_: str, amt: str = None, use_proxy: bool = False) -> APIReturn:
+    def compute_margin_balance(
+        self, algoId: str, type_: str, amt: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoId: Algo ID
@@ -448,14 +528,20 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def adjust_margin_balance(self, algoId: str, type_: str, amt: str = None, percent: str = None, use_proxy: bool = False) -> APIReturn:
+    def adjust_margin_balance(
+        self,
+        algoId: str,
+        type_: str,
+        amt: str = None,
+        percent: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: UserID
-        
+
 
         Args:
             algoId: Algo ID
@@ -477,15 +563,21 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_grid_ai_parameter_public(self, algoOrdType: str, instId: str, direction: str = None, duration: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_grid_ai_parameter_public(
+        self,
+        algoOrdType: str,
+        instId: str,
+        direction: str = None,
+        duration: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Authentication is not required for this public endpoint.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             algoOrdType: Algo order type grid: Spot grid contract_grid: Contract grid
@@ -511,15 +603,29 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def compute_min_investment_public(self, instId: str, algoOrdType: str, maxPx: str, minPx: str, gridNum: str, runType: str, amt: str, ccy: str, direction: str = None, lever: str = None, basePos: bool = None, investmentData: List[dict] = None, use_proxy: bool = False) -> APIReturn:
+    def compute_min_investment_public(
+        self,
+        instId: str,
+        algoOrdType: str,
+        maxPx: str,
+        minPx: str,
+        gridNum: str,
+        runType: str,
+        amt: str,
+        ccy: str,
+        direction: str = None,
+        lever: str = None,
+        basePos: bool = None,
+        investmentData: List[dict] = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Authentication is not required for this public endpoint.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USDT-SWAP
@@ -551,15 +657,23 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def rsi_back_testing_public(self, instId: str, timeframe: str, thold: str, timePeriod: str, triggerCond: str = None, duration: str = None, use_proxy: bool = False) -> APIReturn:
+    def rsi_back_testing_public(
+        self,
+        instId: str,
+        timeframe: str,
+        thold: str,
+        timePeriod: str,
+        triggerCond: str = None,
+        duration: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Authentication is not required for this public endpoint.
         Rate Limit: 20 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             instId: Instrument ID, e.g. BTC-USDT Only applicable to SPOT
@@ -585,5 +699,3 @@ class GridTrading(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
-

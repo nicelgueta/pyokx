@@ -4,13 +4,19 @@ from typing import *
 
 
 class TradingData(APIComponent):
-    def get_support_coin(self, contract: List[str] = None, option: List[str] = None, spot: List[str] = None, use_proxy: bool = False) -> APIReturn:
+    def get_support_coin(
+        self,
+        contract: List[str] = None,
+        option: List[str] = None,
+        spot: List[str] = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the currencies supported by the trading data endpoints.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             contract: Currency supported by derivatives trading data
@@ -31,15 +37,22 @@ class TradingData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_taker_volume(self, ccy: str, instType: str, begin: str = None, end: str = None, period: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_taker_volume(
+        self,
+        ccy: str,
+        instType: str,
+        begin: str = None,
+        end: str = None,
+        period: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the taker volume for both buyers and sellers.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: Currency
@@ -65,15 +78,21 @@ class TradingData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_margin_lending_ratio(self, ccy: str, begin: str = None, end: str = None, period: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_margin_lending_ratio(
+        self,
+        ccy: str,
+        begin: str = None,
+        end: str = None,
+        period: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the ratio of cumulative amount between currency margin quote currency and base currency.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: Currency
@@ -98,15 +117,21 @@ class TradingData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_long_short_ratio(self, ccy: str, begin: str = None, end: str = None, period: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_long_short_ratio(
+        self,
+        ccy: str,
+        begin: str = None,
+        end: str = None,
+        period: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the ratio of users with net long vs net short positions for futures and perpetual swaps.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: Currency
@@ -131,15 +156,21 @@ class TradingData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_contracts_open_interest_and_volume(self, ccy: str, begin: str = None, end: str = None, period: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_contracts_open_interest_and_volume(
+        self,
+        ccy: str,
+        begin: str = None,
+        end: str = None,
+        period: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Retrieve the open interest and trading volume for futures and perpetual swaps.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: Currency
@@ -164,15 +195,16 @@ class TradingData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_options_open_interest_and_volume(self, ccy: str, period: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_options_open_interest_and_volume(
+        self, ccy: str, period: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Retrieve the open interest and trading volume for options.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: Currency
@@ -193,15 +225,16 @@ class TradingData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_put_call_ratio(self, ccy: str, period: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_put_call_ratio(
+        self, ccy: str, period: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Retrieve the open interest ratio and trading volume ratio of calls vs puts.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: Currency
@@ -222,15 +255,16 @@ class TradingData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_open_interest_and_volume_expiry(self, ccy: str, period: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_open_interest_and_volume_expiry(
+        self, ccy: str, period: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Retrieve the open interest and trading volume of calls and puts for each upcoming expiration.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: Currency
@@ -251,15 +285,16 @@ class TradingData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_open_interest_and_volume_strike(self, ccy: str, expTime: str, period: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_open_interest_and_volume_strike(
+        self, ccy: str, expTime: str, period: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Retrieve the taker volume for both buyers and sellers of calls and puts.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: Currency
@@ -281,15 +316,16 @@ class TradingData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_taker_flow(self, ccy: str, period: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_taker_flow(
+        self, ccy: str, period: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         This shows the relative buy/sell volume for calls and puts. It shows whether traders are bullish or bearish on price and volatility.
         Rate Limit: 5 requests per 2 seconds
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: currency
@@ -310,5 +346,3 @@ class TradingData(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
-

@@ -1,15 +1,14 @@
 # auto-generated code #
 from .base import APIComponent, APIReturn, EndpointDetails
-from typing import *
 
 
 class Savings(APIComponent):
     def get_saving_balance(self, ccy: str = None, use_proxy: bool = False) -> APIReturn:
         """
-    
+
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Currency, e.g. BTC
@@ -28,15 +27,16 @@ class Savings(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def savings_purchase_redemption(self, ccy: str, amt: str, side: str, rate: str, use_proxy: bool = False) -> APIReturn:
+    def savings_purchase_redemption(
+        self, ccy: str, amt: str, side: str, rate: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Only the assets in the funding account can be used for saving.
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Currency, e.g. BTC
@@ -61,14 +61,15 @@ class Savings(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def set_lending_rate(self, ccy: str, rate: str, use_proxy: bool = False) -> APIReturn:
+    def set_lending_rate(
+        self, ccy: str, rate: str, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Currency, e.g. BTC
@@ -88,14 +89,20 @@ class Savings(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_lending_history(self, ccy: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_lending_history(
+        self,
+        ccy: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Rate Limit: 6 requests per second
         Rate limit rule: UserID
-        
+
 
         Args:
             ccy: Currency, e.g. BTC
@@ -119,15 +126,16 @@ class Savings(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_public_borrow_info_public(self, ccy: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_public_borrow_info_public(
+        self, ccy: str = None, use_proxy: bool = False
+    ) -> APIReturn:
         """
-    
+
         Authentication is not required for this public endpoint.
         Rate Limit: 6 requests per second
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: Currency, e.g. BTC
@@ -146,15 +154,21 @@ class Savings(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
 
-    def get_public_borrow_history_public(self, ccy: str = None, after: str = None, before: str = None, limit: str = None, use_proxy: bool = False) -> APIReturn:
+    def get_public_borrow_history_public(
+        self,
+        ccy: str = None,
+        after: str = None,
+        before: str = None,
+        limit: str = None,
+        use_proxy: bool = False,
+    ) -> APIReturn:
         """
-    
+
         Authentication is not required for this public endpoint.
         Rate Limit: 6 requests per second
         Rate limit rule: IP
-        
+
 
         Args:
             ccy: Currency, e.g. BTC
@@ -178,5 +192,3 @@ class Savings(APIComponent):
             use_proxy=use_proxy,
         )
         return self.request(details)
-        
-
